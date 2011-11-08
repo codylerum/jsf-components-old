@@ -9,7 +9,7 @@ import org.richfaces.cdk.annotations.Tag;
 @JsfComponent(
         type = "co.cfly.jsf.div", 
         family = "co.cfly.layout", 
-        renderer = @JsfRenderer(type = "co.cfly.oss.jsf.components.div"), 
+        renderer = @JsfRenderer(type = "co.cfly.jsf.div"), 
         tag = @Tag(name="div"))
 abstract public class AbstractDiv extends UIComponentBase  { 
      
