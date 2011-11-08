@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el" 
+	xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core"
+    xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core"
+    xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite"
+    xmlns:javaee="http://java.sun.com/xml/ns/javaee">
+
+    <cc:interface>
+        <cdk:class>co.cfly.oss.jsf.components.div.renderkit.DivRenderer</cdk:class>
+        <cdk:superclass>javax.faces.render.Renderer</cdk:superclass>
+        <cdk:renderer-type>co.cfly.oss.jsf.components.div</cdk:renderer-type>
+    </cc:interface>
+
+    <cc:implementation>
+    	<div cdk:passThroughWithExclusions="id,styleClass,class" id="#{clientId}" class="#{component.attributes['styleClass']}">
+    		<cdk:call expression="renderChildren(facesContext, component)" />
+    	</div>
+    </cc:implementation>
+
+</cdk:root>
