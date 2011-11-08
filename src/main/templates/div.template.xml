@@ -6,9 +6,9 @@
     xmlns:javaee="http://java.sun.com/xml/ns/javaee">
 
     <cc:interface>
-        <cdk:class>co.cfly.oss.jsf.components.div.renderkit.DivRenderer</cdk:class>
-        <cdk:superclass>javax.faces.render.Renderer</cdk:superclass>
-        <cdk:renderer-type>co.cfly.oss.jsf.components.div</cdk:renderer-type>
+        <cdk:class>co.cfly.jsf.div.renderkit.DivRenderer</cdk:class>
+        <cdk:superclass>org.richfaces.renderkit.RendererBase</cdk:superclass>
+        <cdk:renderer-type>co.cfly.jsf.div</cdk:renderer-type>
     </cc:interface>
 
     <cc:implementation>
