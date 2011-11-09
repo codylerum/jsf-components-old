@@ -12,8 +12,8 @@
     </cc:interface>
 
     <cc:implementation>
-    	<cdk:object type="co.cfly.jsf.core.Notices" name="notices" value="#{component.attributes['notices']}" />
-    	<cdk:object type="boolean" name="expanded" value="#{component.attributes['expanded']}" />    	
+    	<cdk:object name="notices" value="#{getNotices(component)}" type="co.cfly.jsf.core.Notices"/>
+    	<cdk:object name="expanded" value="#{component.attributes['expanded']}" />    	
     	
     	<div id="#{clientId}">    	
     	   <c:if test="#{notices.containsNotices}">    	   
