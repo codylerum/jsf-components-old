@@ -6,15 +6,18 @@
     xmlns:javaee="http://java.sun.com/xml/ns/javaee">
 
     <cc:interface>
-        <cdk:class>co.cfly.jsf.renderkit.DivRenderer</cdk:class>
+        <cdk:class>co.cfly.jsf.renderkit.ObjectFieldRenderer</cdk:class>
         <cdk:superclass>org.richfaces.renderkit.RendererBase</cdk:superclass>
-        <cdk:renderer-type>co.cfly.jsf.div</cdk:renderer-type>
+        <cdk:renderer-type>co.cfly.jsf.objectField</cdk:renderer-type>
     </cc:interface>
 
     <cc:implementation>
-    	<div cdk:passThroughWithExclusions="id,styleClass,class" id="#{clientId}" class="#{component.attributes['styleClass']}">
-    		<cdk:body />
+    	<div cdk:passThroughWithExclusions="id,styleClass,class" id="#{clientId}" class="object-field #{component.attributes['styleClass']}">
+    		<div class="object-field-label">#{component.attributes['label']}:</div>
+    		<div class="object-field-value">
+		    	<cdk:body enforce="true"/>
+		    </div>
     	</div>
-    </cc:implementation>
+   	</cc:implementation>
 
 </cdk:root>
