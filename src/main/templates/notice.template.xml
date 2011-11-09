@@ -44,7 +44,7 @@
 					
 				<div id="noticesDiv" style="display:#{expanded ? 'block' : 'none'};">				
 					
-					<c:if test="#{not empty notices.errors}">
+					<c:if test="#{notices.errors != null and !notices.errors.isEmpty()}">
 						<div style="background-color:#EDA3A3;" class="noticeBox">
 							<div style="margin-left:auto;margin-right:auto;text-align:left;">
 								<div id="errorList">
@@ -58,7 +58,7 @@
 						</div>
 					</c:if>
 					
-					<c:if test="#{not empty notices.warnings}">
+					<c:if test="#{notices.warnings != null and !notices.warnings.isEmpty()}">
 						<div style="background-color:#EBEBA0;" class="noticeBox">
 							<div style="margin-left:auto;margin-right:auto;text-align:left;margin-top:5px;">
 								<div id="warningList">
@@ -72,7 +72,7 @@
 						</div>
 					</c:if>
 						
-					<c:if test="#{not empty notices.infos}">
+					<c:if test="#{notices.infos != null and !notices.infos.isEmpty()}">
 						<div style="background-color:#D5F7E8;" class="noticeBox">
 							<div style="margin-left:auto;margin-right:auto;text-align:left;">
 								<div id="infoList">
