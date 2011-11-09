@@ -13,7 +13,7 @@
 
     <cc:implementation>
     	<div cdk:passThroughWithExclusions="id,styleClass,class" id="#{clientId}" class="#{component.attributes['styleClass']}">
-    		<cdk:call expression="renderChildren(facesContext, component)" />
+    		<cdk:body />
     	</div>
     </cc:implementation>
 
