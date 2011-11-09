@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el" 
+	xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core"
+    xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core"
+    xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite"
+    xmlns:javaee="http://java.sun.com/xml/ns/javaee">
+
+    <cc:interface>
+        <cdk:class>co.cfly.jsf.renderkit.NoticeRenderer</cdk:class>
+        <cdk:superclass>co.cfly.jsf.renderkit.NoticeRendererBase</cdk:superclass>
+        <cdk:renderer-type>co.cfly.jsf.notice</cdk:renderer-type>
+    </cc:interface>
+
+    <cc:implementation>
+    	<cdk:object type="co.cfly.jsf.core.Notices" name="notices" value="#{component.attributes['notices']}" />
+    	<cdk:object type="boolean" name="expanded" value="#{component.attributes['expanded']}" />    	
+    	
+    	<div id="#{clientId}">    	
+    	   <c:if test="#{notices.containsNotices}">    	   
+		      <div onclick="jQuery('#noticesDiv').slideToggle('slow'); jQuery('#titleDiv').slideToggle('slow');">
+				
+				<div id="titleDiv" style="display:#{!expanded ? 'block' : 'none'};" class="noticeBox">
+					<c:if test="#{not empty notices.errors}">
+						#{component.attributes['errorTitle']}
+						<script type="text/javascript">
+							jQuery('#titleDiv').css('background-color', '#EDA3A3');
+	                   	</script>
+					</c:if>
+					
+					<c:if test="#{not empty notices.warnings and empty notices.errors}">
+						#{component.attributes['warningTitle']}
+						<script type="text/javascript">
+							jQuery('#titleDiv').css('background-color', '#EBEBA0');
+	                   	</script>
+					</c:if>
+					
+					<c:if test="#{not empty notices.infos and empty notices.warnings and empty notices.errors}">
+						#{component.attributes['infoTitle']}
+						<script type="text/javascript">
+							jQuery('#titleDiv').css('background-color', '#D5F7E8');
+	                   	</script>
+					</c:if>		
+				</div>
+					
+				<div id="noticesDiv" style="display:#{expanded ? 'block' : 'none'};">				
+					
+					<c:if test="#{not empty notices.errors}">
+						<div style="background-color:#EDA3A3;" class="noticeBox">
+							<div style="margin-left:auto;margin-right:auto;text-align:left;">
+								<div id="errorList">
+									<ul style="margin:2px;">
+										<c:forEach var="_e" items="#{notices.errors}">
+											<li>#{_e}</li>
+										</c:forEach>
+									</ul>
+								</div>
+							</div>	
+						</div>
+					</c:if>
+					
+					<c:if test="#{not empty notices.warnings}">
+						<div style="background-color:#EBEBA0;" class="noticeBox">
+							<div style="margin-left:auto;margin-right:auto;text-align:left;margin-top:5px;">
+								<div id="warningList">
+									<ul style="margin:2px;">
+										<c:forEach var="w" items="#{notices.warnings}">
+											<li>#{w}</li>
+										</c:forEach>
+									</ul>
+								</div>
+							</div>	
+						</div>
+					</c:if>
+						
+					<c:if test="#{not empty notices.infos}">
+						<div style="background-color:#D5F7E8;" class="noticeBox">
+							<div style="margin-left:auto;margin-right:auto;text-align:left;">
+								<div id="infoList">
+									<ul style="margin:2px;">
+										<c:forEach var="i" items="#{notices.infos}">
+											<li>#{i}</li>
+										</c:forEach>
+									</ul>
+								</div>
+							</div>	
+						</div>
+					</c:if>
+					
+				</div>
+			   </div>
+			</c:if>
+		</div>
+    	
+   	</cc:implementation>
+
+</cdk:root>
