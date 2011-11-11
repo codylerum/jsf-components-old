@@ -22,11 +22,11 @@ abstract public class AbstractNotice extends UIComponentBase  {
     @Attribute
     public abstract boolean isExpanded();
     
-    @Attribute(defaultValue="Has Warnings -- Click for Details")
-    public abstract String getWarningTitle();
-    
     @Attribute(defaultValue="Has Errors -- Click for Details")
     public abstract String getErrorTitle();
+    
+    @Attribute(defaultValue="Has Warnings -- Click for Details")
+    public abstract String getWarningTitle();   
     
     @Attribute(defaultValue="Has Infos - Click for Details")
     public abstract String getInfoTitle();     

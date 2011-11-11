@@ -20,21 +20,21 @@
 		      <div onclick="jQuery('#noticesDiv').slideToggle('slow'); jQuery('#titleDiv').slideToggle('slow');">
 				
 				<div id="titleDiv" style="display:#{!expanded ? 'block' : 'none'};" class="noticeBox">
-					<c:if test="#{not empty notices.errors}">
+					<c:if test="#{notices.containsErrors()}">
 						#{component.attributes['errorTitle']}
 						<script type="text/javascript">
 							jQuery('#titleDiv').css('background-color', '#EDA3A3');
 	                   	</script>
 					</c:if>
 					
-					<c:if test="#{not empty notices.warnings and empty notices.errors}">
+					<c:if test="#{notices.containsWarnings() and !notices.containsErrors()}">
 						#{component.attributes['warningTitle']}
 						<script type="text/javascript">
 							jQuery('#titleDiv').css('background-color', '#EBEBA0');
 	                   	</script>
 					</c:if>
 					
-					<c:if test="#{not empty notices.infos and empty notices.warnings and empty notices.errors}">
+					<c:if test="#{notices.containsInfos() and !notices.containsWarnings() and !notices.containsErrors()}">
 						#{component.attributes['infoTitle']}
 						<script type="text/javascript">
 							jQuery('#titleDiv').css('background-color', '#D5F7E8');
@@ -60,7 +60,7 @@
 					
 					<c:if test="#{notices.warnings != null and !notices.warnings.isEmpty()}">
 						<div style="background-color:#EBEBA0;" class="noticeBox">
-							<div style="margin-left:auto;margin-right:auto;text-align:left;margin-top:5px;">
+							<div style="margin-left:auto;margin-right:auto;text-align:left;">
 								<div id="warningList">
 									<ul style="margin:2px;">
 										<c:forEach var="w" items="#{notices.warnings}">
