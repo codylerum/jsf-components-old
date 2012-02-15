@@ -14,7 +14,6 @@ public class Notices {
     private List<String> infos;
 
     public Notices() {
-
     }
 
     public Notices(List<String> errors, List<String> warnings, List<String> infos) {

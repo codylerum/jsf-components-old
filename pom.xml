@@ -4,14 +4,19 @@
     <groupId>co.cfly</groupId>
     <artifactId>jsf-components</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <name>Clearfly JSF Components</name>
+    
+    <properties>
+		<org.richfaces.version>4.2.0.CR1</org.richfaces.version>
+	</properties>
+    
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.richfaces</groupId>
                 <artifactId>richfaces-bom</artifactId>
-                <version>4.1.0-SNAPSHOT</version>
+                <version>${org.richfaces.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -30,7 +35,7 @@
         <dependency>
             <groupId>org.richfaces.cdk</groupId>
             <artifactId>annotations</artifactId>
-            <version>4.1.0-SNAPSHOT</version>
+                <version>${org.richfaces.version}</version>
         </dependency>
         <dependency>
             <groupId>org.richfaces.core</groupId>
@@ -59,7 +64,7 @@
             <plugin>
                 <groupId>org.richfaces.cdk</groupId>
                 <artifactId>maven-cdk-plugin</artifactId>
-                <version>4.1.0-SNAPSHOT</version>
+                <version>${org.richfaces.version}</version>
                 <configuration>
                     <!-- project specific settings, see below -->
                 </configuration>
