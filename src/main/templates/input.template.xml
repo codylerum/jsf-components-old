@@ -8,11 +8,16 @@
 		<cdk:renderer-type>co.cfly.jsf.input</cdk:renderer-type>
 	</cc:interface>
 
-	<cc:implementation>
-		<div cdk:passThroughWithExclusions="id,styleClass,class" id="#{clientId}" class="inputPanel #{component.attributes['styleClass']}">
-
+	<cc:implementation>		
+		
+		<cdk:object type=" javax.faces.component.EditableValueHolder" name="inputComponent" value="#{getInputComponent(facesContext,component)}" />
+			
+		<div cdk:passThroughWithExclusions="id,styleClass,class" id="#{clientId}" class="inputPanel #{component.attributes['styleClass']}">			
+			
 			<div class="input-label">
-				<cdk:call expression="encodeLabel(facesContext,component);" />
+				<label for="#{getInputComponentId(facesContext, inputComponent)}">
+				#{getLabel(facesContext,component)}:<c:if test="#{inputComponent.isRequired()}"><span class="required">*</span></c:if>
+				</label>
 			</div>
 
 			<div class="input-value">
@@ -20,7 +25,7 @@
 			</div>
 
 			<div class="input-message">
-				<cdk:call expression="encodeMessages(facesContext, component);" />
+				<cdk:call expression="encodeMessages(facesContext,component);" />
 			</div>
 
 		</div>
