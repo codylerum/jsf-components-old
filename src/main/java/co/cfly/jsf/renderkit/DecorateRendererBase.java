@@ -32,6 +32,7 @@ public class DecorateRendererBase extends RendererBase {
             UIRichMessage m = new UIRichMessage();
             m.setFor(inputComponent.getClientId(facesContext));
             m.setRendererType("org.richfaces.MessageRenderer");
+            m.setParent(component);
             m.encodeAll(facesContext);
         }
     }
