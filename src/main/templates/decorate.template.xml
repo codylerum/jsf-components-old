@@ -3,28 +3,28 @@
 	xmlns:javaee="http://java.sun.com/xml/ns/javaee">
 
 	<cc:interface>
-		<cdk:class>co.cfly.jsf.renderkit.InputRenderer</cdk:class>
-		<cdk:superclass>co.cfly.jsf.renderkit.InputRendererBase</cdk:superclass>
-		<cdk:renderer-type>co.cfly.jsf.input</cdk:renderer-type>
+		<cdk:class>co.cfly.jsf.renderkit.DecorateRenderer</cdk:class>
+		<cdk:superclass>co.cfly.jsf.renderkit.DecorateRendererBase</cdk:superclass>
+		<cdk:renderer-type>co.cfly.jsf.decorate</cdk:renderer-type>
 	</cc:interface>
 
 	<cc:implementation>		
 		
 		<cdk:object type=" javax.faces.component.EditableValueHolder" name="inputComponent" value="#{getInputComponent(facesContext,component)}" />
 			
-		<div cdk:passThroughWithExclusions="id,styleClass,class" id="#{clientId}" class="inputPanel #{component.attributes['styleClass']}">			
+		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="#{component.attributes['styleClass']}">			
 			
-			<div class="input-label">
+			<div class="#{component.attributes['labelStyleClass']}">
 				<label for="#{getInputComponentId(facesContext, inputComponent)}">
 				#{getLabel(facesContext,component)}:<c:if test="#{inputComponent.isRequired()}"><span class="required">*</span></c:if>
 				</label>
 			</div>
 
-			<div class="input-value">
+			<div class="#{component.attributes['valueStyleClass']}">
 				<cdk:body enforce="true" />
 			</div>
 
-			<div class="input-message">
+			<div class="#{component.attributes['messageStyleClass']}">
 				<cdk:call expression="encodeMessages(facesContext,component);" />
 			</div>
 

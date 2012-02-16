@@ -17,7 +17,7 @@ import org.richfaces.renderkit.RendererBase;
  * 
  */
 @ResourceDependencies({ @ResourceDependency(library = "javax.faces", name = "jsf.js"), @ResourceDependency(name = "jquery.js") })
-public class InputRendererBase extends RendererBase {
+public class DecorateRendererBase extends RendererBase {
 
     public String getLabel(FacesContext facesContext, UIComponent component) {
         return (String) component.getAttributes().get("label");
