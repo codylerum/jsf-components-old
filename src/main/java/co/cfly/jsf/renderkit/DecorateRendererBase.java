@@ -31,6 +31,7 @@ public class DecorateRendererBase extends RendererBase {
         if (!editableValueHolder.isValid()) {
             UIRichMessage m = new UIRichMessage();
             m.setFor(inputComponent.getClientId(facesContext));
+            m.setRendererType("org.richfaces.MessageRenderer");
             m.encodeAll(facesContext);
         }
     }
