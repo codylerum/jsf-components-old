@@ -6,10 +6,13 @@ import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.EditableValueHolder;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIMessage;
 import javax.faces.context.FacesContext;
 
-import org.richfaces.component.UIRichMessage;
 import org.richfaces.renderkit.RendererBase;
+
+import co.cfly.jsf.component.AbstractDecorate;
+import co.cfly.jsf.component.AbstractDecorateContainer;
 
 /**
  * 
@@ -19,11 +22,8 @@ import org.richfaces.renderkit.RendererBase;
 @ResourceDependencies({ @ResourceDependency(name = "message.reslib", library = "org.richfaces", target = ""), @ResourceDependency(name = "msg.ecss", library = "org.richfaces", target = "") })
 public class DecorateRendererBase extends RendererBase {
 
-    public void encodeMessages(FacesContext facesContext, UIComponent component) throws IOException {
-        UIComponent valueComponent = getValueComponent(facesContext, component);
-        UIRichMessage m = (UIRichMessage) component.getFacet("message");
-        m.setFor(valueComponent.getClientId(facesContext));
-        m.encodeAll(facesContext);
+    public UIMessage getMessage(UIComponent component) {
+        return (UIMessage) component.getFacet("message");
     }
 
     public void encodeValue(FacesContext facesContext, UIComponent component) throws IOException {
@@ -32,16 +32,16 @@ public class DecorateRendererBase extends RendererBase {
         }
     }
 
-    public String getInputComponentId(FacesContext facesContext, UIComponent valueComponent) {
-        return valueComponent.getClientId(facesContext);
-    }
-
-    public boolean getRequired(UIComponent valueComponent) {
+    public boolean isRequired(UIComponent valueComponent) {
         return isInput(valueComponent) && ((EditableValueHolder) valueComponent).isRequired();
     }
 
     public boolean isInput(UIComponent valueComponent) {
         return valueComponent instanceof EditableValueHolder;
+    }
+
+    public AbstractDecorate getDecorate(UIComponent component) {
+        return (AbstractDecorate) component;
     }
 
     public UIComponent getValueComponent(FacesContext facesContext, UIComponent component) {
@@ -70,55 +70,11 @@ public class DecorateRendererBase extends RendererBase {
         }
     }
 
-    public String getLabelWidth(UIComponent component) {
-        String result = (String) getAttributeFromContainer(component, "labelWidth");
-
-        if (result != null) {
-            return result;
-        }
-        else {
-            return "150px";
-        }
-    }
-
-    public String getValueWidth(UIComponent component) {
-        String result = (String) getAttributeFromContainer(component, "valueWidth");
-
-        if (result != null) {
-            return result;
-        }
-        else {
-            return "300px";
-        }
-    }
-
-    public String getMessageWidth(UIComponent component) {
-        String result = (String) getAttributeFromContainer(component, "messageWidth");
-
-        if (result != null) {
-            return result;
-        }
-        else {
-            return "200px";
-        }
-    }
-
-    private Object getAttributeFromContainer(UIComponent component, String attributeName) {
-        UIComponent decorateContainer = getDecorateContainer(component);
-        if (decorateContainer != null) {
-            return decorateContainer.getAttributes().get(attributeName);
-        }
-        else {
-            return null;
-        }
-    }
-
-    private static UIComponent getDecorateContainer(UIComponent component) {
+    public AbstractDecorateContainer getDecorateContainer(UIComponent component) {
         UIComponent parent = component.getParent();
-
-        while (parent != null && parent.getRendererType() != null) {
-            if (parent.getRendererType().equals("co.cfly.jsf.decorateContainer")) {
-                return parent;
+        while (parent != null) {
+            if (parent instanceof AbstractDecorateContainer) {
+                return (AbstractDecorateContainer) parent;
             }
             else {
                 parent = parent.getParent();
