@@ -6,7 +6,7 @@
 		<cdk:class>co.cfly.jsf.renderkit.DecorateRenderer</cdk:class>
 		<cdk:superclass>co.cfly.jsf.renderkit.DecorateRendererBase</cdk:superclass>
 		<cdk:renderer-type>co.cfly.jsf.decorate</cdk:renderer-type>
-		<cdk:renders-children>false</cdk:renders-children> 
+		<cdk:renders-children>true</cdk:renders-children> 
 	</cc:interface>
 
 	<cc:implementation>

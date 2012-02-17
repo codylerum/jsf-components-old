@@ -28,9 +28,7 @@ public class DecorateRendererBase extends RendererBase {
 
     public void encodeValue(FacesContext facesContext, UIComponent component) throws IOException {
         for (UIComponent c : component.getChildren()) {
-            if (!(c instanceof UIRichMessage)) {
-                c.encodeAll(facesContext);
-            }
+            c.encodeAll(facesContext);
         }
     }
 

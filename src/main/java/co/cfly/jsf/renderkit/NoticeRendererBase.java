@@ -13,7 +13,7 @@ import co.cfly.jsf.core.Notices;
  * @author Cody Lerum
  * 
  */
-@ResourceDependencies({ @ResourceDependency(library = "javax.faces", name = "jsf.js"), @ResourceDependency(name = "jquery.js") })
+@ResourceDependencies({ @ResourceDependency(name = "jquery.js") })
 public class NoticeRendererBase extends RendererBase {
 
     public Notices getNotices(UIComponent component) {
