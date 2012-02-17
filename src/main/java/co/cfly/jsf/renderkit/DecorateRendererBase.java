@@ -16,45 +16,116 @@ import org.richfaces.renderkit.RendererBase;
  * @author Cody Lerum
  * 
  */
-@ResourceDependencies({ @ResourceDependency(library = "javax.faces", name = "jsf.js"), @ResourceDependency(name = "jquery.js") })
+@ResourceDependencies({ @ResourceDependency(name = "message.reslib", library = "org.richfaces", target = ""), @ResourceDependency(name = "msg.ecss", library = "org.richfaces", target = "") })
 public class DecorateRendererBase extends RendererBase {
 
-    public String getLabel(FacesContext facesContext, UIComponent component) {
-        return (String) component.getAttributes().get("label");
+    public void encodeMessages(FacesContext facesContext, UIComponent component) throws IOException {
+        UIComponent valueComponent = getValueComponent(facesContext, component);
+        UIRichMessage m = (UIRichMessage) component.getFacet("message");
+        m.setFor(valueComponent.getClientId(facesContext));
+        m.encodeAll(facesContext);
     }
 
-    public void encodeMessages(FacesContext facesContext, UIComponent component) throws IOException {
-
-        EditableValueHolder editableValueHolder = getInputComponent(facesContext, component);
-        UIComponent inputComponent = (UIComponent) editableValueHolder;
-
-        if (!editableValueHolder.isValid()) {
-            UIRichMessage m = new UIRichMessage();
-            m.setFor(inputComponent.getClientId(facesContext));
-            m.setRendererType("org.richfaces.MessageRenderer");
-            m.setParent(component);
-            m.encodeAll(facesContext);
+    public void encodeValue(FacesContext facesContext, UIComponent component) throws IOException {
+        for (UIComponent c : component.getChildren()) {
+            if (!(c instanceof UIRichMessage)) {
+                c.encodeAll(facesContext);
+            }
         }
     }
 
-    public String getInputComponentId(FacesContext facesContext, EditableValueHolder editableValueHolder) {
-        return ((UIComponent) editableValueHolder).getClientId(facesContext);
+    public String getInputComponentId(FacesContext facesContext, UIComponent valueComponent) {
+        return valueComponent.getClientId(facesContext);
     }
 
-    public EditableValueHolder getInputComponent(FacesContext facesContext, UIComponent component) {
-        if (component.getChildCount() == 1) {
+    public boolean getRequired(UIComponent valueComponent) {
+        return isInput(valueComponent) && ((EditableValueHolder) valueComponent).isRequired();
+    }
 
-            UIComponent child = component.getChildren().get(0);
+    public boolean isInput(UIComponent valueComponent) {
+        return valueComponent instanceof EditableValueHolder;
+    }
 
-            if (child instanceof EditableValueHolder) {
-                return (EditableValueHolder) child;
+    public UIComponent getValueComponent(FacesContext facesContext, UIComponent component) {
+
+        int editableValueCount = 0;
+        UIComponent editableValueComponent = null;
+
+        for (UIComponent c : component.getChildren()) {
+            if (c instanceof EditableValueHolder) {
+                editableValueComponent = c;
+                editableValueCount++;
             }
-            else {
-                throw new RuntimeException("Child must be instance of EditableValueHolder");
-            }
+        }
+
+        if (component.getChildCount() == 0) {
+            throw new RuntimeException("Must contain at least 1 child component.");
+        }
+        else if (editableValueCount == 1) {
+            return editableValueComponent;
+        }
+        else if (editableValueCount > 1) {
+            throw new RuntimeException("Can't have more than 1 EditableValueHolder child");
         }
         else {
-            throw new RuntimeException("Must contain 1 child component");
+            return component.getChildren().get(0);
         }
+    }
+
+    public String getLabelWidth(UIComponent component) {
+        String result = (String) getAttributeFromContainer(component, "labelWidth");
+
+        if (result != null) {
+            return result;
+        }
+        else {
+            return "150px";
+        }
+    }
+
+    public String getValueWidth(UIComponent component) {
+        String result = (String) getAttributeFromContainer(component, "valueWidth");
+
+        if (result != null) {
+            return result;
+        }
+        else {
+            return "300px";
+        }
+    }
+
+    public String getMessageWidth(UIComponent component) {
+        String result = (String) getAttributeFromContainer(component, "messageWidth");
+
+        if (result != null) {
+            return result;
+        }
+        else {
+            return "200px";
+        }
+    }
+
+    private Object getAttributeFromContainer(UIComponent component, String attributeName) {
+        UIComponent decorateContainer = getDecorateContainer(component);
+        if (decorateContainer != null) {
+            return decorateContainer.getAttributes().get(attributeName);
+        }
+        else {
+            return null;
+        }
+    }
+
+    private static UIComponent getDecorateContainer(UIComponent component) {
+        UIComponent parent = component.getParent();
+
+        while (parent != null && parent.getRendererType() != null) {
+            if (parent.getRendererType().equals("co.cfly.jsf.decorateContainer")) {
+                return parent;
+            }
+            else {
+                parent = parent.getParent();
+            }
+        }
+        return null;
     }
 }

@@ -6,27 +6,34 @@
 		<cdk:class>co.cfly.jsf.renderkit.DecorateRenderer</cdk:class>
 		<cdk:superclass>co.cfly.jsf.renderkit.DecorateRendererBase</cdk:superclass>
 		<cdk:renderer-type>co.cfly.jsf.decorate</cdk:renderer-type>
+		<cdk:renders-children>false</cdk:renders-children> 
 	</cc:interface>
 
-	<cc:implementation>		
-		
-		<cdk:object type=" javax.faces.component.EditableValueHolder" name="inputComponent" value="#{getInputComponent(facesContext,component)}" />
-			
-		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="#{component.attributes['styleClass']}">			
-			
-			<div class="#{component.attributes['labelStyleClass']}">
-				<label for="#{getInputComponentId(facesContext, inputComponent)}">
-				#{getLabel(facesContext,component)}:<c:if test="#{inputComponent.isRequired()}"><span class="required">*</span></c:if>
+	<cc:implementation>
+
+		<cdk:object type="javax.faces.component.UIComponent" name="valueComponent" value="#{getValueComponent(facesContext,component)}" />
+
+		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="#{component.attributes['styleClass']}">
+
+			<div class="#{component.attributes['labelStyleClass']}" style="width:#{getLabelWidth(component)};">
+				<label for="#{getInputComponentId(facesContext, valueComponent)}">
+					#{component.attributes['label']}
+					<c:if test="#{getRequired(valueComponent)}">
+						<span class="required">*</span>
+					</c:if>
+					:
 				</label>
 			</div>
 
-			<div class="#{component.attributes['valueStyleClass']}">
-				<cdk:body enforce="true" />
+			<div class="#{component.attributes['valueStyleClass']}" style="width:#{getValueWidth(component)};#{isInput(valueComponent) ? 'margin-top:-3px' : ''}">
+				<cdk:call expression="encodeValue(facesContext,component)" />
 			</div>
 
-			<div class="#{component.attributes['messageStyleClass']}">
-				<cdk:call expression="encodeMessages(facesContext,component);" />
-			</div>
+			<c:if test="#{component.attributes['renderMessage']}">
+				<div class="#{component.attributes['messageStyleClass']}" style="width:#{getMessageWidth(component)};">
+					<cdk:call expression="encodeMessages(facesContext,component)" />
+				</div>
+			</c:if>
 
 		</div>
 	</cc:implementation>
