@@ -6,9 +6,9 @@ import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.EditableValueHolder;
 import javax.faces.component.UIComponent;
-import javax.faces.component.UIMessage;
 import javax.faces.context.FacesContext;
 
+import org.richfaces.component.UIRichMessage;
 import org.richfaces.renderkit.RendererBase;
 
 import co.cfly.jsf.component.AbstractDecorate;
@@ -22,8 +22,8 @@ import co.cfly.jsf.component.AbstractDecorateContainer;
 @ResourceDependencies({ @ResourceDependency(name = "message.reslib", library = "org.richfaces", target = ""), @ResourceDependency(name = "msg.ecss", library = "org.richfaces", target = "") })
 public class DecorateRendererBase extends RendererBase {
 
-    public UIMessage getMessage(UIComponent component) {
-        return (UIMessage) component.getFacet("message");
+    public UIRichMessage getMessage(UIComponent component) {
+        return (UIRichMessage) component.getFacet("message");
     }
 
     public void encodeValue(FacesContext facesContext, UIComponent component) throws IOException {

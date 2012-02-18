@@ -14,11 +14,14 @@
 		<cdk:object type="co.cfly.jsf.component.AbstractDecorate" name="decorate" value="#{getDecorate(component)}" />
 		<cdk:object type="co.cfly.jsf.component.AbstractDecorateContainer" name="container" value="#{getDecorateContainer(decorate)}" />
 		<cdk:object type="javax.faces.component.UIComponent" name="valueComponent" value="#{getValueComponent(facesContext,component)}" />
+		<cdk:object type="org.richfaces.component.UIRichMessage" name="message" value="#{getMessage(decorate)}" />
+		<cdk:object type="java.lang.String" name="forId" value="#{valueComponent.getId()}" />
+		<cdk:call expression="message.setFor(forId)" />		
 
 		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="#{decorate.styleClass}">
 
 			<div class="#{decorate.labelStyleClass}" style="width:#{container == null ? '150px' : container.labelWidth};">
-				<label for="#{valueComponent.clientId}">
+				<label for="#{forId}">
 					#{decorate.label}
 					<c:if test="#{isRequired(valueComponent)}">
 						<span class="required">*</span>
@@ -33,8 +36,7 @@
 
 			<c:if test="#{decorate.isRenderMessage()}">
 				<div class="#{decorate.messageStyleClass}" style="width:#{container == null ? '300px' : container.messageWidth};">
-					<cdk:call expression="getMessage(decorate).setFor(valueComponent.getClientId())" />
-					<cdk:call expression="getMessage(decorate).encodeAll(facesContext)" />
+					<cdk:call expression="message.encodeAll(facesContext)" />
 				</div>
 			</c:if>
 
