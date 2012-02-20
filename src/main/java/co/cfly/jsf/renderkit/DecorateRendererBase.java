@@ -44,7 +44,7 @@ public class DecorateRendererBase extends RendererBase {
         return (AbstractDecorate) component;
     }
 
-    public UIComponent getValueComponent(FacesContext facesContext, UIComponent component) {
+    public UIComponent getValueComponent(FacesContext facesContext, UIComponent component, AbstractDecorate decorate) {
 
         int editableValueCount = 0;
         UIComponent editableValueComponent = null;
@@ -62,7 +62,7 @@ public class DecorateRendererBase extends RendererBase {
         else if (editableValueCount == 1) {
             return editableValueComponent;
         }
-        else if (editableValueCount > 1) {
+        else if (editableValueCount > 1 && decorate.isRenderMessage()) {
             throw new RuntimeException("Can't have more than 1 EditableValueHolder child");
         }
         else {

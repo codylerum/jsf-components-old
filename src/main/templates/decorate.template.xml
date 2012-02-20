@@ -13,7 +13,7 @@
 
 		<cdk:object type="co.cfly.jsf.component.AbstractDecorate" name="decorate" value="#{getDecorate(component)}" />
 		<cdk:object type="co.cfly.jsf.component.AbstractDecorateContainer" name="container" value="#{getDecorateContainer(decorate)}" />
-		<cdk:object type="javax.faces.component.UIComponent" name="valueComponent" value="#{getValueComponent(facesContext,component)}" />
+		<cdk:object type="javax.faces.component.UIComponent" name="valueComponent" value="#{getValueComponent(facesContext,component,decorate)}" />
 		<cdk:object type="org.richfaces.component.UIRichMessage" name="message" value="#{getMessage(decorate)}" />
 		<cdk:call expression="message.setFor(valueComponent.getId())" />		
 
