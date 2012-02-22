@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el" xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core" xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core" xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite"
+	xmlns:javaee="http://java.sun.com/xml/ns/javaee">
+
+	<cc:interface>
+		<cdk:class>co.cfly.jsf.renderkit.DecorateOutputRenderer</cdk:class>
+		<cdk:superclass>co.cfly.jsf.renderkit.DecorateOutputRendererBase</cdk:superclass>
+		<cdk:renderer-type>co.cfly.jsf.decorateOutput</cdk:renderer-type>
+		<cdk:renders-children>true</cdk:renders-children>
+	</cc:interface>
+
+	<cc:implementation>
+
+		<cdk:object type="co.cfly.jsf.component.AbstractDecorateOutput" name="decorateOutput" value="#{getDecorateOutput(component)}" />
+		<cdk:object type="co.cfly.jsf.component.AbstractDecorateContainer" name="container" value="#{getDecorateContainer(decorateOutput)}" />
+
+		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="#{decorateOutput.styleClass}">
+
+			<div class="#{decorateOutput.labelStyleClass}" style="width:#{container == null ? '150px' : container.labelWidth};">
+				#{decorateOutput.label}
+			</div>
+
+			<div class="#{decorateOutput.valueStyleClass}" style="width:#{container == null ? '200px' : container.valueWidth};">
+				<cdk:call expression="encodeValue(facesContext,component)" />
+			</div>
+			
+		</div>
+		
+	</cc:implementation>
+
+</cdk:root>

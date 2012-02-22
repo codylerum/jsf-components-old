@@ -11,7 +11,7 @@ import javax.faces.context.FacesContext;
 import org.richfaces.component.UIRichMessage;
 import org.richfaces.renderkit.RendererBase;
 
-import co.cfly.jsf.component.AbstractDecorate;
+import co.cfly.jsf.component.AbstractDecorateInput;
 import co.cfly.jsf.component.AbstractDecorateContainer;
 
 /**
@@ -20,7 +20,7 @@ import co.cfly.jsf.component.AbstractDecorateContainer;
  * 
  */
 @ResourceDependencies({ @ResourceDependency(name = "message.reslib", library = "org.richfaces", target = ""), @ResourceDependency(name = "msg.ecss", library = "org.richfaces", target = "") })
-public class DecorateRendererBase extends RendererBase {
+public class DecorateInputRendererBase extends RendererBase {
 
     public UIRichMessage getMessage(UIComponent component) {
         return (UIRichMessage) component.getFacet("message");
@@ -33,18 +33,14 @@ public class DecorateRendererBase extends RendererBase {
     }
 
     public boolean isRequired(UIComponent valueComponent) {
-        return isInput(valueComponent) && ((EditableValueHolder) valueComponent).isRequired();
+        return ((EditableValueHolder) valueComponent).isRequired();
     }
 
-    public boolean isInput(UIComponent valueComponent) {
-        return valueComponent instanceof EditableValueHolder;
+    public AbstractDecorateInput getDecorateInput(UIComponent component) {
+        return (AbstractDecorateInput) component;
     }
 
-    public AbstractDecorate getDecorate(UIComponent component) {
-        return (AbstractDecorate) component;
-    }
-
-    public UIComponent getValueComponent(FacesContext facesContext, UIComponent component, AbstractDecorate decorate) {
+    public UIComponent getValueComponent(FacesContext facesContext, UIComponent component, AbstractDecorateInput decorateInput) {
 
         int editableValueCount = 0;
         UIComponent editableValueComponent = null;
@@ -56,17 +52,14 @@ public class DecorateRendererBase extends RendererBase {
             }
         }
 
-        if (component.getChildCount() == 0) {
-            throw new RuntimeException("Must contain at least 1 child component.");
-        }
-        else if (editableValueCount == 1) {
+        if (editableValueCount == 1) {
             return editableValueComponent;
         }
-        else if (editableValueCount > 1 && decorate.isRenderMessage()) {
-            throw new RuntimeException("Can't have more than 1 EditableValueHolder child");
+        else if (component.getChildCount() == 0) {
+            throw new RuntimeException("Must contain at least 1 child component. Has: " + component.getChildCount()  + " Label: " + decorateInput.getLabel());
         }
         else {
-            return component.getChildren().get(0);
+            throw new RuntimeException("Must have One and only One EditableValueHolder child. Has: " + editableValueCount + " Label: " + decorateInput.getLabel());
         }
     }
 

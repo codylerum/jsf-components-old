@@ -10,10 +10,10 @@ import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
 import org.richfaces.component.UIRichMessage;
 
-@JsfComponent(type = "co.cfly.jsf.Decorate", family = "co.cfly.layout", renderer = @JsfRenderer(type = "co.cfly.jsf.decorate"), tag = @Tag(name = "decorate"))
-abstract public class AbstractDecorate extends UIComponentBase {
+@JsfComponent(type = "co.cfly.jsf.DecorateInput", family = "co.cfly.layout", renderer = @JsfRenderer(type = "co.cfly.jsf.decorateInput"), tag = @Tag(name = "decorateInput"))
+abstract public class AbstractDecorateInput extends UIComponentBase {
 
-    public AbstractDecorate() {
+    public AbstractDecorateInput() {
         super();
         UIRichMessage m = new UIRichMessage();
         m.setRendererType("org.richfaces.MessageRenderer");

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el" xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core" xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core" xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite"
+	xmlns:javaee="http://java.sun.com/xml/ns/javaee">
+
+	<cc:interface>
+		<cdk:class>co.cfly.jsf.renderkit.DecorateInputRenderer</cdk:class>
+		<cdk:superclass>co.cfly.jsf.renderkit.DecorateInputRendererBase</cdk:superclass>
+		<cdk:renderer-type>co.cfly.jsf.decorateInput</cdk:renderer-type>
+		<cdk:renders-children>true</cdk:renders-children>
+	</cc:interface>
+
+	<cc:implementation>
+
+		<cdk:object type="co.cfly.jsf.component.AbstractDecorateInput" name="decorateInput" value="#{getDecorateInput(component)}" />
+		<cdk:object type="co.cfly.jsf.component.AbstractDecorateContainer" name="container" value="#{getDecorateContainer(decorateInput)}" />
+		<cdk:object type="javax.faces.component.UIComponent" name="valueComponent" value="#{getValueComponent(facesContext,component,decorateInput)}" />
+		<cdk:object type="org.richfaces.component.UIRichMessage" name="message" value="#{getMessage(decorateInput)}" />
+		<cdk:call expression="message.setFor(valueComponent.getId())" />
+		
+		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="#{decorateInput.styleClass}">
+
+			<div class="#{decorateInput.labelStyleClass}" style="width:#{container == null ? '150px' : container.labelWidth};">
+				<label for="#{valueComponent.getClientId(facesContext)}">
+					#{decorateInput.label}
+					<c:if test="#{isRequired(valueComponent)}">
+						<span class="required">*</span>
+					</c:if>
+					:
+				</label>
+			</div>
+
+			<div class="#{decorateInput.valueStyleClass}" style="width:#{container == null ? '200px' : container.valueWidth};margin-top:-3px">
+				<cdk:call expression="encodeValue(facesContext,component)" />
+			</div>
+
+			<c:if test="#{decorateInput.isRenderMessage()}">
+				<div class="#{decorateInput.messageStyleClass}" style="width:#{container == null ? '300px' : container.messageWidth};">
+					<cdk:call expression="message.encodeAll(facesContext)" />
+				</div>
+			</c:if>
+
+		</div>
+	</cc:implementation>
+
+</cdk:root>
