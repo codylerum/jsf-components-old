@@ -17,7 +17,7 @@
 		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="#{decorateOutput.styleClass}">
 
 			<div class="#{decorateOutput.labelStyleClass}" style="width:#{container == null ? '150px' : container.labelWidth};">
-				#{decorateOutput.label}
+				#{decorateOutput.label}:
 			</div>
 
 			<div class="#{decorateOutput.valueStyleClass}" style="width:#{container == null ? '200px' : container.valueWidth};">
