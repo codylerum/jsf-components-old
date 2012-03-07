@@ -3,11 +3,11 @@
 	<groupId>co.cfly</groupId>
 	<artifactId>jsf-components</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.10</version>
+	<version>1.0.11</version>
 	<name>Clearfly JSF Components</name>
 
 	<properties>
-		<org.richfaces.version>4.2.0.CR1</org.richfaces.version>
+		<org.richfaces.version>4.2.0.Final</org.richfaces.version>
 	</properties>
 
 	<dependencyManagement>

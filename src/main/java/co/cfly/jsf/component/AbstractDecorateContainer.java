@@ -10,12 +10,12 @@ import org.richfaces.cdk.annotations.Tag;
 @JsfComponent(type = "co.cfly.jsf.DecorateContainer", family = "co.cfly.layout", renderer = @JsfRenderer(type = "co.cfly.jsf.decorateContainer"), tag = @Tag(name = "decorateContainer"))
 abstract public class AbstractDecorateContainer extends UIComponentBase {
 
-    @Attribute(required = true, defaultValue = "150px")
+    @Attribute(required = false, defaultValue = "150px")
     public abstract String getLabelWidth();
 
-    @Attribute(required = true, defaultValue = "300px")
+    @Attribute(required = false, defaultValue = "300px")
     public abstract String getValueWidth();
 
-    @Attribute(required = true, defaultValue = "200px")
+    @Attribute(required = false, defaultValue = "200px")
     public abstract String getMessageWidth();
 }
