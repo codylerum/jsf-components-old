@@ -7,7 +7,7 @@
 	<name>Clearfly JSF Components</name>
 
 	<properties>
-		<org.richfaces.version>4.2.0.Final</org.richfaces.version>
+		<org.richfaces.version>4.2.2.Final</org.richfaces.version>
 	</properties>
 
 	<dependencyManagement>
@@ -63,6 +63,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1.2</version>	
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -76,9 +77,6 @@
 				<groupId>org.richfaces.cdk</groupId>
 				<artifactId>maven-cdk-plugin</artifactId>
 				<version>${org.richfaces.version}</version>
-				<configuration>
-					<!-- project specific settings, see below -->
-				</configuration>
 				<executions>
 					<execution>
 						<id>cdk-generate-sources</id>
