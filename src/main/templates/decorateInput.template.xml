@@ -19,7 +19,7 @@
 		
 		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="#{decorateInput.styleClass}">
 
-			<div class="#{decorateInput.labelStyleClass}" style="width:#{container == null ? '150px' : container.labelWidth};">
+			<div class="#{decorateInput.labelStyleClass}" style="#{container == null ? '' : 'width:' + container.labelWidth + ';'}">
 				<label for="#{valueComponent.getClientId(facesContext)}">
 					#{decorateInput.label}
 					<c:if test="#{isRequired(valueComponent)}">
@@ -29,12 +29,12 @@
 				</label>
 			</div>
 
-			<div class="#{decorateInput.valueStyleClass}" style="width:#{container == null ? '200px' : container.valueWidth};margin-top:-3px">
+			<div class="#{decorateInput.valueStyleClass}" style="#{container == null ? '' : 'width:' + container.valueWidth + ';'}">
 				<cdk:call expression="encodeValue(facesContext,component)" />
 			</div>
 
 			<c:if test="#{decorateInput.isRenderMessage()}">
-				<div class="#{decorateInput.messageStyleClass}" style="width:#{container == null ? '300px' : container.messageWidth};">
+				<div class="#{decorateInput.messageStyleClass}" style="#{container == null ? '' : 'width:' + container.messageWidth + ';'}">
 					<cdk:call expression="message.encodeAll(facesContext)" />
 				</div>
 			</c:if>

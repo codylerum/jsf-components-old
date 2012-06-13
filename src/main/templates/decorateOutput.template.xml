@@ -16,11 +16,11 @@
 
 		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="#{decorateOutput.styleClass}">
 
-			<div class="#{decorateOutput.labelStyleClass}" style="width:#{container == null ? '150px' : container.labelWidth};">
+			<div class="#{decorateOutput.labelStyleClass}" style="#{container == null ? '' : 'width:' + container.labelWidth + ';'}">
 				#{decorateOutput.label}:
 			</div>
 
-			<div class="#{decorateOutput.valueStyleClass}" style="width:#{container == null ? '200px' : container.valueWidth};">
+			<div class="#{decorateOutput.valueStyleClass}" style="#{container == null ? '' : 'width:' + container.valueWidth + ';'}">
 				<cdk:call expression="encodeValue(facesContext,component)" />
 			</div>
 			
