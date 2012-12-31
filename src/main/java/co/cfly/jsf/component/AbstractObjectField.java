@@ -7,7 +7,8 @@ import org.richfaces.cdk.annotations.JsfComponent;
 import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
 
-@JsfComponent(type = "co.cfly.jsf.ObjectField", family = "co.cfly.layout", renderer = @JsfRenderer(type = "co.cfly.jsf.objectField"), tag = @Tag(name = "objectField"))
+@JsfComponent(type = "co.cfly.jsf.ObjectField", family = "co.cfly.layout", renderer = @JsfRenderer(type = "co.cfly.jsf.objectField"), tag = @Tag(name = "objectField"), attributes = {
+        "base-props.xml", "core-props.xml" })
 abstract public class AbstractObjectField extends UIComponentBase {
 
     @Attribute(required = true)

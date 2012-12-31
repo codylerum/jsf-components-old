@@ -9,7 +9,8 @@ import org.richfaces.cdk.annotations.Tag;
 
 import co.cfly.jsf.core.Notices;
 
-@JsfComponent(type = "co.cfly.jsf.Notice", family = "co.cfly.layout", renderer = @JsfRenderer(type = "co.cfly.jsf.notice"), tag = @Tag(name = "notice"))
+@JsfComponent(type = "co.cfly.jsf.Notice", family = "co.cfly.layout", renderer = @JsfRenderer(type = "co.cfly.jsf.notice"), tag = @Tag(name = "notice"), attributes = { "base-props.xml",
+        "core-props.xml" })
 abstract public class AbstractNotice extends UIComponentBase {
 
     @Attribute(required = true)
