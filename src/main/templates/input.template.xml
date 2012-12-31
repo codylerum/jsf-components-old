@@ -12,7 +12,7 @@
     </cc:interface>
 
     <cc:implementation>
-    	<input cdk:passThroughWithExclusions="id,class" type="#{component.attributes['type']}" id="#{clientId}" name="#{clientId}" value="#{getInputValue(facesContext, component)}" placeholder="#{component.attributes['placeholder']}" autocomplete="#{component.attributes['autocomplete']}" />    	
+    	<input cdk:passThroughWithExclusions="id,class" type="#{component.attributes['type']}" id="#{clientId}" name="#{clientId}" value="#{getInputValue(facesContext, component)}" placeholder="#{component.attributes['placeholder']}" autocomplete="#{component.attributes['autocomplete']}" min="#{component.attributes['min']}" max="#{component.attributes['max']}" step="#{component.attributes['step']}"/>    	
     </cc:implementation>
 
 </cdk:root>

@@ -14,9 +14,19 @@ abstract public class AbstractInput extends UIInput {
     @Attribute(defaultValue = "text")
     public abstract String getType();
 
-    @Attribute(defaultValue = "on")
+    @Attribute
     public abstract String getAutocomplete();
 
     @Attribute
     public abstract String getPlaceholder();
+
+    // For type=number
+    @Attribute
+    public abstract String getMin();
+
+    @Attribute
+    public abstract String getMax();
+
+    @Attribute
+    public abstract String getStep();
 }
