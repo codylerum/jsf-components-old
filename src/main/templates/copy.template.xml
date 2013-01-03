@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el"
+	xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core" xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core"
+	xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite"
+	xmlns:javaee="http://java.sun.com/xml/ns/javaee">
+
+	<cc:interface>
+		<cdk:class>co.cfly.jsf.renderkit.CopyRenderer</cdk:class>
+		<cdk:superclass>co.cfly.jsf.renderkit.CopyRendererBase</cdk:superclass>
+		<cdk:renderer-type>co.cfly.jsf.copy</cdk:renderer-type>
+	</cc:interface>
+
+	<cc:implementation>
+		<div id="#{clientId}" cdk:passThroughWithExclusions="id,styleClass,class"
+			class="clipboard-copy-div #{component.attributes['styleClass']}">#{component.attributes['copyText']}</div>
+		<script type="text/javascript">
+			ZeroClipboard.setMoviePath("/javax.faces.resource/ZeroClipboard.swf.jsf?ln=co.cfly.jsf");
+			new ZeroClipboard.Client('##{clientId}');
+			$('.copy-copy-div').text('#{component.attributes['copyText']}');
+			$('##{clientId}').text('#{component.attributes['copiedText']}');
+		</script>
+	</cc:implementation>
+
+</cdk:root>
