@@ -17,12 +17,20 @@
 			if(clip == null) {
 				ZeroClipboard.setMoviePath("#{facesContext.externalContext.requestContextPath}/javax.faces.resource/ZeroClipboard.swf.jsf?ln=co.cfly.jsf");
 				var clip = new ZeroClipboard.Client();
-				window.onresize = function () { clip.reposition();}
+				window.onresize = function () {clip.reposition();}
 			}
-			clip.glue(fixId('#{clientId}'));
-			clip.on( 'complete', function(clip, args) {
-			$('.clipboard-copy-div').text('#{component.attributes['copyText']}');
-			$(this).text('#{component.attributes['copiedText']}'); } );
+			clip.glue('#{clientId}'.replace(/:/g, "\\:"));
+			clip.on('complete', function(clip, args) {
+				$('.clipboard-copy-div').text('#{component.attributes['copyText']}');
+				$(this).text('#{component.attributes['copiedText']}'); 
+				clip.reposition();
+			});	
+			clip.on('wrongflash', function (clip, args) {
+	  			$('.clipboard-copy-div').hide();
+			});
+			clip.on('noflash', function (clip, args) {
+	  			$('.clipboard-copy-div').hide();
+			});					
 		</script>
 	</cc:implementation>
 
