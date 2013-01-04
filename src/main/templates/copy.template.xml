@@ -11,7 +11,7 @@
 	</cc:interface>
 
 	<cc:implementation>
-			<button id="#{clientId}" cdk:passThroughWithExclusions="id,styleClass,class" data-clipboard-text="#{component.attributes['value']}"
+			<button id="#{clientId}" type="button" cdk:passThroughWithExclusions="id,styleClass,class" data-clipboard-text="#{component.attributes['value']}"
 				class="clipboard-copy-div #{component.attributes['styleClass']}">#{component.attributes['copyText']}</button>
 		<script type="text/javascript">
 			if(clip == null) {
@@ -19,7 +19,7 @@
 				var clip = new ZeroClipboard.Client();
 				window.onresize = function () { clip.reposition();}
 			}
-			clip.glue('##{clientId}');
+			clip.glue(fixId('#{clientId}'));
 			clip.on( 'complete', function(clip, args) {
 			$('.clipboard-copy-div').text('#{component.attributes['copyText']}');
 			$(this).text('#{component.attributes['copiedText']}'); } );
