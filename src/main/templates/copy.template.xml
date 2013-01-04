@@ -11,13 +11,18 @@
 	</cc:interface>
 
 	<cc:implementation>
-		<div id="#{clientId}" cdk:passThroughWithExclusions="id,styleClass,class"
-			class="clipboard-copy-div #{component.attributes['styleClass']}">#{component.attributes['copyText']}</div>
+			<button id="#{clientId}" cdk:passThroughWithExclusions="id,styleClass,class" data-clipboard-text="#{component.attributes['value']}"
+				class="clipboard-copy-div #{component.attributes['styleClass']}">#{component.attributes['copyText']}</button>
 		<script type="text/javascript">
-			ZeroClipboard.setMoviePath("/javax.faces.resource/ZeroClipboard.swf.jsf?ln=co.cfly.jsf");
-			new ZeroClipboard.Client('##{clientId}');
-			$('.copy-copy-div').text('#{component.attributes['copyText']}');
-			$('##{clientId}').text('#{component.attributes['copiedText']}');
+			if(clip == null) {
+				ZeroClipboard.setMoviePath("#{facesContext.externalContext.requestContextPath}/javax.faces.resource/ZeroClipboard.swf.jsf?ln=co.cfly.jsf");
+				var clip = new ZeroClipboard.Client();
+				window.onresize = function () { clip.reposition();}
+			}
+			clip.glue('##{clientId}');
+			clip.on( 'complete', function(clip, args) {
+			$('.clipboard-copy-div').text('#{component.attributes['copyText']}');
+			$(this).text('#{component.attributes['copiedText']}'); } );
 		</script>
 	</cc:implementation>
 
