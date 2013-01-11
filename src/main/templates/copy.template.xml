@@ -11,9 +11,11 @@
 	</cc:interface>
 
 	<cc:implementation>
-			<div id="#{clientId}" type="button" data-clipboard-text="#{component.attributes['value']}" cdk:passThroughWithExclusions="id,styleClass,class" class="clipboard-copy-div #{component.attributes['styleClass']}">#{component.attributes['copyText']}</div>
+		<div id="#{clientId}" data-clipboard-text="#{component.attributes['value']}" cdk:passThroughWithExclusions="id,styleClass,class" class="clipboard-copy-div #{component.attributes['copyClass']} #{component.attributes['styleClass']}" >
+			<cdk:body />
+		</div>
 		<script type="text/javascript">
-			startZclip('#{clientId}','#{facesContext.externalContext.requestContextPath}/javax.faces.resource/ZeroClipboard.swf.jsf?ln=co.cfly.jsf', '#{component.attributes['copyText']}', '#{component.attributes['copiedText']}');
+			startZclip('#{clientId}','#{facesContext.externalContext.requestContextPath}/javax.faces.resource/ZeroClipboard.swf.jsf?ln=co.cfly.jsf', '#{component.attributes['copyClass']}', '#{component.attributes['copiedClass']}');
 		</script>
 	</cc:implementation>
 

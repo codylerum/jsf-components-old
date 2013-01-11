@@ -4,7 +4,7 @@
 	<groupId>co.cfly</groupId>
 	<artifactId>jsf-components</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.18</version>
+	<version>1.0.19</version>
 	<name>Clearfly JSF Components</name>
 
 	<properties>

@@ -1,14 +1,14 @@
 var zclip;
 
-function startZclip(id, zclip_path, copyText, copiedText) {
+function startZclip(id, zclip_path, copyClass, copiedClass) {
         if (zclip == null) {
                 ZeroClipboard.setDefaults({
                         moviePath : zclip_path
                 });
                 zclip = new ZeroClipboard();
                 zclip.on('complete', function(zclip, args) {
-                        $('.clipboard-copy-div').text(copyText);
-                        $(this).text(copiedText);
+                        $('.clipboard-copy-div.' + copiedClass).removeClass(copiedClass).addClass(copyClass);
+                        $(this).removeClass(copyClass).addClass(copiedClass);
                 });
                 zclip.on('wrongflash', function(zclip, args) {
                         $('.clipboard-copy-div').hide();

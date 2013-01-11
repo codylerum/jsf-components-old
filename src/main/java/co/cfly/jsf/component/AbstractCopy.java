@@ -13,9 +13,9 @@ abstract public class AbstractCopy extends UIComponentBase {
     @Attribute(required = true)
     public abstract String getValue();
 
-    @Attribute(required = false, defaultValue = "Copy")
-    public abstract String getCopyText();
+    @Attribute(required = false, defaultValue = "icon-copy")
+    public abstract String getCopyClass();
 
-    @Attribute(required = false, defaultValue = "Copied")
-    public abstract String getCopiedText();
+    @Attribute(required = false, defaultValue = "icon-paste")
+    public abstract String getCopiedClass();
 }
