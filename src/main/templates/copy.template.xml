@@ -5,9 +5,9 @@
 	xmlns:javaee="http://java.sun.com/xml/ns/javaee">
 
 	<cc:interface>
-		<cdk:class>co.cfly.jsf.renderkit.CopyRenderer</cdk:class>
-		<cdk:superclass>co.cfly.jsf.renderkit.CopyRendererBase</cdk:superclass>
-		<cdk:renderer-type>co.cfly.jsf.copy</cdk:renderer-type>
+		<cdk:class>com.outjected.jsf.renderkit.CopyRenderer</cdk:class>
+		<cdk:superclass>com.outjected.jsf.renderkit.CopyRendererBase</cdk:superclass>
+		<cdk:renderer-type>com.outjected.jsf.copy</cdk:renderer-type>
 	</cc:interface>
 
 	<cc:implementation>
@@ -15,7 +15,7 @@
 			<cdk:body />
 		</div>
 		<script type="text/javascript">
-			startZclip('#{clientId}','#{facesContext.externalContext.requestContextPath}/javax.faces.resource/ZeroClipboard.swf.jsf?ln=co.cfly.jsf', '#{component.attributes['copyClass']}', '#{component.attributes['copiedClass']}');
+			startZclip('#{clientId}','#{facesContext.externalContext.requestContextPath}/javax.faces.resource/ZeroClipboard.swf.jsf?ln=com.outjected.jsf', '#{component.attributes['copyClass']}', '#{component.attributes['copiedClass']}');
 		</script>
 	</cc:implementation>
 

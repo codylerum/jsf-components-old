@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>co.cfly</groupId>
+	<groupId>com.outjected</groupId>
 	<artifactId>jsf-components</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.19</version>
-	<name>Clearfly JSF Components</name>
+	<version>1.0.20</version>
+	<name>JSF Components</name>
 
 	<properties>
 		<org.richfaces.version>4.2.3.Final</org.richfaces.version>

@@ -6,13 +6,13 @@
     xmlns:javaee="http://java.sun.com/xml/ns/javaee">
 
     <cc:interface>
-        <cdk:class>co.cfly.jsf.renderkit.NoticeRenderer</cdk:class>
-        <cdk:superclass>co.cfly.jsf.renderkit.NoticeRendererBase</cdk:superclass>
-        <cdk:renderer-type>co.cfly.jsf.notice</cdk:renderer-type>
+        <cdk:class>com.outjected.jsf.renderkit.NoticeRenderer</cdk:class>
+        <cdk:superclass>com.outjected.jsf.renderkit.NoticeRendererBase</cdk:superclass>
+        <cdk:renderer-type>com.outjected.jsf.notice</cdk:renderer-type>
     </cc:interface>
 
     <cc:implementation>
-    	<cdk:object name="notices" value="#{getNotices(component)}" type="co.cfly.jsf.core.Notices"/>
+    	<cdk:object name="notices" value="#{getNotices(component)}" type="com.outjected.jsf.core.Notices"/>
     	<cdk:object name="expanded" value="#{component.attributes['expanded']}" />    	
     	
     	<div id="#{clientId}">    	

@@ -1,4 +1,4 @@
-package co.cfly.jsf.renderkit;
+package com.outjected.jsf.renderkit;
 
 import java.io.IOException;
 
@@ -11,8 +11,9 @@ import javax.faces.context.FacesContext;
 import org.richfaces.component.UIRichMessage;
 import org.richfaces.renderkit.RendererBase;
 
-import co.cfly.jsf.component.AbstractDecorateInput;
-import co.cfly.jsf.component.AbstractDecorateContainer;
+import com.outjected.jsf.component.AbstractDecorateContainer;
+import com.outjected.jsf.component.AbstractDecorateInput;
+
 
 /**
  * 

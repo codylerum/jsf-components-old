@@ -3,16 +3,16 @@
 	xmlns:javaee="http://java.sun.com/xml/ns/javaee">
 
 	<cc:interface>
-		<cdk:class>co.cfly.jsf.renderkit.DecorateOutputRenderer</cdk:class>
-		<cdk:superclass>co.cfly.jsf.renderkit.DecorateOutputRendererBase</cdk:superclass>
-		<cdk:renderer-type>co.cfly.jsf.decorateOutput</cdk:renderer-type>
+		<cdk:class>com.outjected.jsf.renderkit.DecorateOutputRenderer</cdk:class>
+		<cdk:superclass>com.outjected.jsf.renderkit.DecorateOutputRendererBase</cdk:superclass>
+		<cdk:renderer-type>com.outjected.jsf.decorateOutput</cdk:renderer-type>
 		<cdk:renders-children>true</cdk:renders-children>
 	</cc:interface>
 
 	<cc:implementation>
 
-		<cdk:object type="co.cfly.jsf.component.AbstractDecorateOutput" name="decorateOutput" value="#{getDecorateOutput(component)}" />
-		<cdk:object type="co.cfly.jsf.component.AbstractDecorateContainer" name="container" value="#{getDecorateContainer(decorateOutput)}" />
+		<cdk:object type="com.outjected.jsf.component.AbstractDecorateOutput" name="decorateOutput" value="#{getDecorateOutput(component)}" />
+		<cdk:object type="com.outjected.jsf.component.AbstractDecorateContainer" name="container" value="#{getDecorateContainer(decorateOutput)}" />
 
 		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="#{decorateOutput.styleClass}">
 

@@ -1,4 +1,4 @@
-package co.cfly.jsf.component;
+package com.outjected.jsf.component;
 
 import javax.faces.component.UIComponentBase;
 
@@ -7,7 +7,7 @@ import org.richfaces.cdk.annotations.JsfComponent;
 import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
 
-@JsfComponent(type = "co.cfly.jsf.DecorateOutput", family = "co.cfly.layout", renderer = @JsfRenderer(type = "co.cfly.jsf.decorateOutput"), tag = @Tag(name = "decorateOutput"), attributes = {
+@JsfComponent(type = "com.outjected.jsf.DecorateOutput", family = "com.outjected.layout", renderer = @JsfRenderer(type = "com.outjected.jsf.decorateOutput"), tag = @Tag(name = "decorateOutput"), attributes = {
         "base-props.xml", "core-props.xml" })
 abstract public class AbstractDecorateOutput extends UIComponentBase {
 

@@ -1,4 +1,4 @@
-package co.cfly.jsf.component;
+package com.outjected.jsf.component;
 
 import javax.faces.component.UIComponentBase;
 
@@ -7,9 +7,10 @@ import org.richfaces.cdk.annotations.JsfComponent;
 import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
 
-import co.cfly.jsf.core.Notices;
+import com.outjected.jsf.core.Notices;
 
-@JsfComponent(type = "co.cfly.jsf.Notice", family = "co.cfly.layout", renderer = @JsfRenderer(type = "co.cfly.jsf.notice"), tag = @Tag(name = "notice"), attributes = { "base-props.xml",
+
+@JsfComponent(type = "com.outjected.jsf.Notice", family = "com.outjected.layout", renderer = @JsfRenderer(type = "com.outjected.jsf.notice"), tag = @Tag(name = "notice"), attributes = { "base-props.xml",
         "core-props.xml" })
 abstract public class AbstractNotice extends UIComponentBase {
 

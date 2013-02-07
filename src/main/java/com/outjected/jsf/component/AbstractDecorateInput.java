@@ -1,4 +1,4 @@
-package co.cfly.jsf.component;
+package com.outjected.jsf.component;
 
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIComponentBase;
@@ -10,7 +10,7 @@ import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
 import org.richfaces.component.UIRichMessage;
 
-@JsfComponent(type = "co.cfly.jsf.DecorateInput", family = "co.cfly.layout", renderer = @JsfRenderer(type = "co.cfly.jsf.decorateInput"), tag = @Tag(name = "decorateInput"), attributes = {
+@JsfComponent(type = "com.outjected.jsf.DecorateInput", family = "com.outjected.layout", renderer = @JsfRenderer(type = "com.outjected.jsf.decorateInput"), tag = @Tag(name = "decorateInput"), attributes = {
         "base-props.xml", "core-props.xml" })
 abstract public class AbstractDecorateInput extends UIComponentBase {
 

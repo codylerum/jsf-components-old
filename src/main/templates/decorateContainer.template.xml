@@ -3,9 +3,9 @@
 	xmlns:javaee="http://java.sun.com/xml/ns/javaee">
 
 	<cc:interface>
-		<cdk:class>co.cfly.jsf.renderkit.DecorateContainerRenderer</cdk:class>
+		<cdk:class>com.outjected.jsf.renderkit.DecorateContainerRenderer</cdk:class>
 		<cdk:superclass>org.richfaces.renderkit.RendererBase</cdk:superclass>
-		<cdk:renderer-type>co.cfly.jsf.decorateContainer</cdk:renderer-type>
+		<cdk:renderer-type>com.outjected.jsf.decorateContainer</cdk:renderer-type>
 	</cc:interface>
 
 	<cc:implementation>

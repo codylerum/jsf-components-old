@@ -1,4 +1,4 @@
-package co.cfly.jsf.component;
+package com.outjected.jsf.component;
 
 import javax.faces.component.UIInput;
 
@@ -7,7 +7,7 @@ import org.richfaces.cdk.annotations.JsfComponent;
 import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
 
-@JsfComponent(type = "co.cfly.jsf.Input", family = "co.cfly.input", renderer = @JsfRenderer(type = "co.cfly.jsf.input"), tag = @Tag(name = "input"), attributes = { "core-props.xml",
+@JsfComponent(type = "com.outjected.jsf.Input", family = "com.outjected.input", renderer = @JsfRenderer(type = "com.outjected.jsf.input"), tag = @Tag(name = "input"), attributes = { "core-props.xml",
         "events-key-props.xml", "input-props.xml" })
 abstract public class AbstractInput extends UIInput {
 

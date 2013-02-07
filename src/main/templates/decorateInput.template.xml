@@ -3,16 +3,16 @@
 	xmlns:javaee="http://java.sun.com/xml/ns/javaee">
 
 	<cc:interface>
-		<cdk:class>co.cfly.jsf.renderkit.DecorateInputRenderer</cdk:class>
-		<cdk:superclass>co.cfly.jsf.renderkit.DecorateInputRendererBase</cdk:superclass>
-		<cdk:renderer-type>co.cfly.jsf.decorateInput</cdk:renderer-type>
+		<cdk:class>com.outjected.jsf.renderkit.DecorateInputRenderer</cdk:class>
+		<cdk:superclass>com.outjected.jsf.renderkit.DecorateInputRendererBase</cdk:superclass>
+		<cdk:renderer-type>com.outjected.jsf.decorateInput</cdk:renderer-type>
 		<cdk:renders-children>true</cdk:renders-children>
 	</cc:interface>
 
 	<cc:implementation>
 
-		<cdk:object type="co.cfly.jsf.component.AbstractDecorateInput" name="decorateInput" value="#{getDecorateInput(component)}" />
-		<cdk:object type="co.cfly.jsf.component.AbstractDecorateContainer" name="container" value="#{getDecorateContainer(decorateInput)}" />
+		<cdk:object type="com.outjected.jsf.component.AbstractDecorateInput" name="decorateInput" value="#{getDecorateInput(component)}" />
+		<cdk:object type="com.outjected.jsf.component.AbstractDecorateContainer" name="container" value="#{getDecorateContainer(decorateInput)}" />
 		<cdk:object type="javax.faces.component.UIComponent" name="valueComponent" value="#{getValueComponent(facesContext,component,decorateInput)}" />
 		<cdk:object type="org.richfaces.component.UIRichMessage" name="message" value="#{getMessage(decorateInput)}" />
 		<cdk:call expression="message.setFor(valueComponent.getId())" />

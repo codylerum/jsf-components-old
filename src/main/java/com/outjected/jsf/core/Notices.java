@@ -1,4 +1,4 @@
-package co.cfly.jsf.core;
+package com.outjected.jsf.core;
 
 import java.util.List;
 

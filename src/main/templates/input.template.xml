@@ -6,9 +6,9 @@
     xmlns:javaee="http://java.sun.com/xml/ns/javaee">
 
     <cc:interface>
-        <cdk:class>co.cfly.jsf.renderkit.InputRenderer</cdk:class>
+        <cdk:class>com.outjected.jsf.renderkit.InputRenderer</cdk:class>
         <cdk:superclass>org.richfaces.renderkit.InputRendererBase</cdk:superclass>
-        <cdk:renderer-type>co.cfly.jsf.input</cdk:renderer-type>
+        <cdk:renderer-type>com.outjected.jsf.input</cdk:renderer-type>
     </cc:interface>
 
     <cc:implementation>
