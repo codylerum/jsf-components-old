@@ -14,32 +14,26 @@
 		<cdk:object type="com.outjected.jsf.component.AbstractDecorateInput" name="decorateInput" value="#{getDecorateInput(component)}" />
 		<cdk:object type="com.outjected.jsf.component.AbstractDecorateContainer" name="container" value="#{getDecorateContainer(decorateInput)}" />
 		<cdk:object type="javax.faces.component.UIComponent" name="valueComponent" value="#{getValueComponent(facesContext,component,decorateInput)}" />
-		<cdk:object type="org.richfaces.component.UIRichMessage" name="message" value="#{getMessage(decorateInput)}" />
+		<cdk:object type="javax.faces.component.UIMessage" name="message" value="#{getMessage(decorateInput)}" />
 		<cdk:call expression="message.setFor(valueComponent.getId())" />
 		
-		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="#{decorateInput.styleClass}">
-
-			<div class="#{decorateInput.labelStyleClass}" style="#{container == null ? '' : 'width:' + container.labelWidth + ';'}">
-				<label for="#{valueComponent.getClientId(facesContext)}">
-					#{decorateInput.label}
-					<c:if test="#{isRequired(valueComponent)}">
-						<span class="required">*</span>
-					</c:if>
-					:
-				</label>
-			</div>
-
-			<div class="#{decorateInput.valueStyleClass}" style="#{container == null ? '' : 'width:' + container.valueWidth + ';'}">
-				<cdk:call expression="encodeValue(facesContext,component)" />
-			</div>
-
+	<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="control-group #{hasErrors(facesContext,valueComponent) ? 'error' : null}">
+		<label class="control-label"  for="#{valueComponent.getClientId(facesContext)}">
+			#{decorateInput.label}
+			<c:if test="#{isRequired(valueComponent)}">
+				<span class="required">*</span>
+			</c:if>			
+		</label>
+		<div class="controls">
+			<cdk:call expression="encodeValue(facesContext,component)" />
 			<c:if test="#{decorateInput.isRenderMessage()}">
-				<div class="#{decorateInput.messageStyleClass}" style="#{container == null ? '' : 'width:' + container.messageWidth + ';'}">
+				<span class="help-block">
 					<cdk:call expression="message.encodeAll(facesContext)" />
-				</div>
+				</span>
 			</c:if>
-
 		</div>
+	</div>
+		
 	</cc:implementation>
 
 </cdk:root>

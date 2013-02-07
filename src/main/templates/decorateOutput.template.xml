@@ -14,18 +14,15 @@
 		<cdk:object type="com.outjected.jsf.component.AbstractDecorateOutput" name="decorateOutput" value="#{getDecorateOutput(component)}" />
 		<cdk:object type="com.outjected.jsf.component.AbstractDecorateContainer" name="container" value="#{getDecorateContainer(decorateOutput)}" />
 
-		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="#{decorateOutput.styleClass}">
-
-			<div class="#{decorateOutput.labelStyleClass}" style="#{container == null ? '' : 'width:' + container.labelWidth + ';'}">
-				#{decorateOutput.label}:
-			</div>
-
-			<div class="#{decorateOutput.valueStyleClass}" style="#{container == null ? '' : 'width:' + container.valueWidth + ';'}">
-				<cdk:call expression="encodeValue(facesContext,component)" />
-			</div>
-			
+		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="control-group">
+			<label class="control-label" >#{decorateOutput.label}</label>
+			<div class="controls">
+				<span class="output">
+					<cdk:call expression="encodeValue(facesContext,component)" />
+				</span>
+			</div>		
 		</div>
-		
+				
 	</cc:implementation>
 
 </cdk:root>
