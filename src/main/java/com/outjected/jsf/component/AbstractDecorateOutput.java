@@ -13,16 +13,4 @@ abstract public class AbstractDecorateOutput extends UIComponentBase {
 
     @Attribute(required = true)
     public abstract String getLabel();
-
-    @Attribute(required = false, defaultValue = "decorate-outer")
-    public abstract String getStyleClass();
-
-    @Attribute(required = false, defaultValue = "decorate-label")
-    public abstract String getLabelStyleClass();
-
-    @Attribute(required = false, defaultValue = "decorate-value")
-    public abstract String getValueStyleClass();
-
-    @Attribute(required = false, defaultValue = "decorate-message")
-    public abstract String getMessageStyleClass();
 }

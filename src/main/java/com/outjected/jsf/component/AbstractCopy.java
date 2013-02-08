@@ -7,7 +7,8 @@ import org.richfaces.cdk.annotations.JsfComponent;
 import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
 
-@JsfComponent(type = "com.outjected.jsf.Copy", family = "com.outjected.layout", renderer = @JsfRenderer(type = "com.outjected.jsf.copy"), tag = @Tag(name = "copy"), attributes = { "base-props.xml", "core-props.xml" })
+@JsfComponent(type = "com.outjected.jsf.Copy", family = "com.outjected.layout", renderer = @JsfRenderer(type = "com.outjected.jsf.copy"), tag = @Tag(name = "copy"), attributes = { "base-props.xml",
+        "core-props.xml" })
 abstract public class AbstractCopy extends UIComponentBase {
 
     @Attribute(required = true)

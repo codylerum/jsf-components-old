@@ -7,9 +7,7 @@ import javax.faces.context.FacesContext;
 
 import org.richfaces.renderkit.RendererBase;
 
-import com.outjected.jsf.component.AbstractDecorateContainer;
 import com.outjected.jsf.component.AbstractDecorateOutput;
-
 
 /**
  * 
@@ -26,18 +24,5 @@ public class DecorateOutputRendererBase extends RendererBase {
 
     public AbstractDecorateOutput getDecorateOutput(UIComponent component) {
         return (AbstractDecorateOutput) component;
-    }
-
-    public AbstractDecorateContainer getDecorateContainer(UIComponent component) {
-        UIComponent parent = component.getParent();
-        while (parent != null) {
-            if (parent instanceof AbstractDecorateContainer) {
-                return (AbstractDecorateContainer) parent;
-            }
-            else {
-                parent = parent.getParent();
-            }
-        }
-        return null;
     }
 }

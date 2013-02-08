@@ -8,7 +8,6 @@ import org.richfaces.renderkit.RendererBase;
 
 import com.outjected.jsf.core.Notices;
 
-
 /**
  * 
  * @author Cody Lerum

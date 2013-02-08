@@ -9,9 +9,8 @@ import org.richfaces.cdk.annotations.Tag;
 
 import com.outjected.jsf.core.Notices;
 
-
-@JsfComponent(type = "com.outjected.jsf.Notice", family = "com.outjected.layout", renderer = @JsfRenderer(type = "com.outjected.jsf.notice"), tag = @Tag(name = "notice"), attributes = { "base-props.xml",
-        "core-props.xml" })
+@JsfComponent(type = "com.outjected.jsf.Notice", family = "com.outjected.layout", renderer = @JsfRenderer(type = "com.outjected.jsf.notice"), tag = @Tag(name = "notice"), attributes = {
+        "base-props.xml", "core-props.xml" })
 abstract public class AbstractNotice extends UIComponentBase {
 
     @Attribute(required = true)

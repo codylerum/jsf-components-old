@@ -11,7 +11,6 @@ import javax.faces.context.FacesContext;
 
 import org.richfaces.renderkit.RendererBase;
 
-import com.outjected.jsf.component.AbstractDecorateContainer;
 import com.outjected.jsf.component.AbstractDecorateInput;
 
 /**
@@ -74,18 +73,5 @@ public class DecorateInputRendererBase extends RendererBase {
         else {
             throw new RuntimeException("Must have One and only One EditableValueHolder child. Has: " + editableValueCount + " Label: " + decorateInput.getLabel());
         }
-    }
-
-    public AbstractDecorateContainer getDecorateContainer(UIComponent component) {
-        UIComponent parent = component.getParent();
-        while (parent != null) {
-            if (parent instanceof AbstractDecorateContainer) {
-                return (AbstractDecorateContainer) parent;
-            }
-            else {
-                parent = parent.getParent();
-            }
-        }
-        return null;
     }
 }

@@ -12,9 +12,8 @@
 	<cc:implementation>
 
 		<cdk:object type="com.outjected.jsf.component.AbstractDecorateOutput" name="decorateOutput" value="#{getDecorateOutput(component)}" />
-		<cdk:object type="com.outjected.jsf.component.AbstractDecorateContainer" name="container" value="#{getDecorateContainer(decorateOutput)}" />
 
-		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="control-group">
+		<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="control-group #{component.attributes['styleClass']}">
 			<label class="control-label" >#{decorateOutput.label}</label>
 			<div class="controls">
 				<span class="output">
