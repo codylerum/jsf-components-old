@@ -15,7 +15,7 @@
 			<cdk:body />
 		</div>
 		<script type="text/javascript">
-			startZclip('#{clientId}','#{facesContext.externalContext.requestContextPath}/javax.faces.resource/ZeroClipboard.swf.jsf?ln=com.outjected.jsf', '#{component.attributes['copyClass']}', '#{component.attributes['copiedClass']}');
+			startZclip('#{clientId}','#{facesContext.application.resourceHandler.createResource('ZeroClipboard.swf', 'com.outjected.jsf').requestPath}', '#{component.attributes['copyClass']}', '#{component.attributes['copiedClass']}');
 		</script>
 	</cc:implementation>
 
