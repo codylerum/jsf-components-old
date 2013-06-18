@@ -13,7 +13,7 @@
 
     <cc:implementation>
     	<div cdk:passThroughWithExclusions="id,styleClass,class" id="#{clientId}" class="object-field #{component.attributes['styleClass']}">
-    		<div class="object-field-label">#{component.attributes['label']}:</div>
+    		<div class="object-field-label" title="#{component.attributes['label']}">#{component.attributes['label']}:</div>
     		<div class="object-field-value">
 		    	<cdk:body enforce="true"/>
 		    </div>

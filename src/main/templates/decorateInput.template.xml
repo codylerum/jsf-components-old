@@ -17,7 +17,7 @@
 		<cdk:call expression="message.setFor(valueComponent.getId())" />
 		
 	<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="control-group #{component.attributes['styleClass']} #{hasErrors(facesContext,valueComponent) ? 'error' : null}">
-		<label class="control-label"  for="#{valueComponent.getClientId(facesContext)}">
+		<label class="control-label"  for="#{valueComponent.getClientId(facesContext)}" title="#{decorateInput.label}">
 			#{decorateInput.label}
 			<c:if test="#{isRequired(valueComponent)}">
 				<span class="required">*</span>
