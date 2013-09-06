@@ -14,4 +14,21 @@ abstract public class AbstractObjectField extends UIComponentBase {
     @Attribute(required = true)
     public abstract String getLabel();
 
+    @Attribute(required = false)
+    public abstract String getHelp();
+
+    @Attribute(required = false)
+    public abstract String getHelpTitle();
+
+    @Attribute(defaultValue = "right", required = false)
+    public abstract String getHelpPlacement();
+
+    @Attribute(defaultValue = "click", required = false)
+    public abstract String getHelpTrigger();
+    
+    @Attribute(defaultValue = "true", required = false)
+    public abstract String getHelpHtml();
+    
+    @Attribute(defaultValue = "1500", required = false)
+    public abstract String getHelpDelay();
 }
