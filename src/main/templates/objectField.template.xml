@@ -15,7 +15,7 @@
     	<div cdk:passThroughWithExclusions="id,styleClass,class" id="#{clientId}" class="object-field #{component.attributes['styleClass']}">
     		<div class="object-field-label">
     			<c:if test="#{not empty component.attributes['help']}">
-	    			<span class="popover-source" data-container="body" data-content="#{component.attributes['help']}" data-original-title="#{not empty component.attributes['helpTitle'] ? component.attributes['helpTitle'] : component.attributes['label']}" data-placement="#{component.attributes['helpPlacement']}" data-trigger="#{component.attributes['helpTrigger']}" data-delay="#{component.attributes['helpDelay']}" data-html="#{component.attributes['helpHtml']}">
+	    			<span class="popover-source" data-container="body" data-content="#{component.attributes['help']}" data-title="#{not empty component.attributes['helpTitle'] ? component.attributes['helpTitle'] : component.attributes['label']}" data-placement="#{component.attributes['helpPlacement']}" data-trigger="#{component.attributes['helpTrigger']}" data-delay="#{component.attributes['helpDelay']}" data-html="#{component.attributes['helpHtml']}">
 	    				#{component.attributes['label']}:	    			
 	    			</span>	    			
 	    		</c:if>

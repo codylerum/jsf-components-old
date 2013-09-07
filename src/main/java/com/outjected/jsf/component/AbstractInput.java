@@ -29,4 +29,22 @@ abstract public class AbstractInput extends UIInput {
 
     @Attribute
     public abstract String getStep();
+
+    @Attribute(required = false)
+    public abstract String getHelp();
+
+    @Attribute(required = false)
+    public abstract String getHelpTitle();
+
+    @Attribute(defaultValue = "right", required = false)
+    public abstract String getHelpPlacement();
+
+    @Attribute(defaultValue = "focus", required = false)
+    public abstract String getHelpTrigger();
+
+    @Attribute(defaultValue = "true", required = false)
+    public abstract String getHelpHtml();
+
+    @Attribute(defaultValue = "0", required = false)
+    public abstract String getHelpDelay();
 }

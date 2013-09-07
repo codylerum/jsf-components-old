@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el" 
-	xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core"
-    xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core"
-    xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite"
-    xmlns:javaee="http://java.sun.com/xml/ns/javaee">
+<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el"
+	xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core" xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core"
+	xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite"
+	xmlns:javaee="http://java.sun.com/xml/ns/javaee">
 
-    <cc:interface>
-        <cdk:class>com.outjected.jsf.renderkit.InputRenderer</cdk:class>
-        <cdk:superclass>org.richfaces.renderkit.InputRendererBase</cdk:superclass>
-        <cdk:renderer-type>com.outjected.jsf.input</cdk:renderer-type>
-    </cc:interface>
+	<cc:interface>
+		<cdk:class>com.outjected.jsf.renderkit.InputRenderer</cdk:class>
+		<cdk:superclass>org.richfaces.renderkit.InputRendererBase</cdk:superclass>
+		<cdk:renderer-type>com.outjected.jsf.input</cdk:renderer-type>
+	</cc:interface>
 
-    <cc:implementation>
-    	<input cdk:passThroughWithExclusions="id,class" type="#{component.attributes['type']}" id="#{clientId}" name="#{clientId}" value="#{getInputValue(facesContext, component)}" placeholder="#{component.attributes['placeholder']}" autocomplete="#{component.attributes['autocomplete']}" min="#{component.attributes['min']}" max="#{component.attributes['max']}" step="#{component.attributes['step']}"/>    	
-    </cc:implementation>
+	<cc:implementation>
+		<c:if test="#{not empty component.attributes['help']}">
+			<input cdk:passThroughWithExclusions="id,class"
+				class="popover-source"
+				type="#{component.attributes['type']}" id="#{clientId}" name="#{clientId}"
+				value="#{getInputValue(facesContext, component)}" placeholder="#{component.attributes['placeholder']}"
+				autocomplete="#{component.attributes['autocomplete']}" min="#{component.attributes['min']}"
+				max="#{component.attributes['max']}" step="#{component.attributes['step']}"
+				data-container="body" data-content="#{component.attributes['help']}"
+				data-title="#{component.attributes['helpTitle']}" data-placement="#{component.attributes['helpPlacement']}"
+				data-trigger="#{component.attributes['helpTrigger']}" data-delay="#{component.attributes['helpDelay']}"
+				data-html="#{component.attributes['helpHtml']}" />
+		</c:if>
+		<c:if test="#{empty component.attributes['help']}">
+			<input cdk:passThroughWithExclusions="id,class"
+				type="#{component.attributes['type']}" id="#{clientId}" name="#{clientId}"
+				value="#{getInputValue(facesContext, component)}" placeholder="#{component.attributes['placeholder']}"
+				autocomplete="#{component.attributes['autocomplete']}" min="#{component.attributes['min']}"
+				max="#{component.attributes['max']}" step="#{component.attributes['step']}" />
+		</c:if>
+	</cc:implementation>
 
 </cdk:root>

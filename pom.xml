@@ -4,11 +4,11 @@
 	<groupId>com.outjected</groupId>
 	<artifactId>jsf-components</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.24</version>
+	<version>1.0.26</version>
 	<name>JSF Components</name>
 
 	<properties>
-		<org.richfaces.version>4.2.3.Final</org.richfaces.version>
+		<org.richfaces.version>4.3.1.Final</org.richfaces.version>
 	</properties>
 
 	<repositories>
