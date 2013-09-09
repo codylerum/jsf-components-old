@@ -29,6 +29,6 @@ abstract public class AbstractObjectField extends UIComponentBase {
     @Attribute(defaultValue = "true", required = false)
     public abstract String getHelpHtml();
     
-    @Attribute(defaultValue = "1500", required = false)
+    @Attribute(defaultValue = "0", required = false)
     public abstract String getHelpDelay();
 }
