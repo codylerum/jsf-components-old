@@ -1,96 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el" 
-	xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core"
-    xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core"
-    xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite"
-    xmlns:javaee="http://java.sun.com/xml/ns/javaee">
+<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el"
+	xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core" xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core"
+	xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite"
+	xmlns:javaee="http://java.sun.com/xml/ns/javaee">
 
-    <cc:interface>
-        <cdk:class>com.outjected.jsf.renderkit.NoticeRenderer</cdk:class>
-        <cdk:superclass>com.outjected.jsf.renderkit.NoticeRendererBase</cdk:superclass>
-        <cdk:renderer-type>com.outjected.jsf.notice</cdk:renderer-type>
-    </cc:interface>
+	<cc:interface>
+		<cdk:class>com.outjected.jsf.renderkit.NoticeRenderer</cdk:class>
+		<cdk:superclass>com.outjected.jsf.renderkit.NoticeRendererBase</cdk:superclass>
+		<cdk:renderer-type>com.outjected.jsf.notice</cdk:renderer-type>
+	</cc:interface>
 
-    <cc:implementation>
-    	<cdk:object name="notices" value="#{getNotices(component)}" type="com.outjected.jsf.core.Notices"/>
-    	<cdk:object name="expanded" value="#{component.attributes['expanded']}" />    	
-    	
-    	<div id="#{clientId}">    	
-    	   <c:if test="#{notices.containsNotices}">    	   
-		      <div onclick="jQuery('#noticesDiv').slideToggle('slow'); jQuery('#titleDiv').slideToggle('slow');">
-				
-				<div id="titleDiv" style="display:#{!expanded ? 'block' : 'none'};" class="noticeBox">
-					<c:if test="#{notices.containsErrors()}">
-						#{component.attributes['errorTitle']}
-						<script type="text/javascript">
-							jQuery('#titleDiv').css('background-color', '#EDA3A3');
-	                   	</script>
-					</c:if>
-					
-					<c:if test="#{notices.containsWarnings() and !notices.containsErrors()}">
-						#{component.attributes['warningTitle']}
-						<script type="text/javascript">
-							jQuery('#titleDiv').css('background-color', '#EBEBA0');
-	                   	</script>
-					</c:if>
-					
-					<c:if test="#{notices.containsInfos() and !notices.containsWarnings() and !notices.containsErrors()}">
-						#{component.attributes['infoTitle']}
-						<script type="text/javascript">
-							jQuery('#titleDiv').css('background-color', '#D5F7E8');
-	                   	</script>
-					</c:if>		
+	<cc:implementation>
+		<cdk:object name="notices" value="#{getNotices(component)}"	type="com.outjected.jsf.core.Notices" />
+		<cdk:object name="infos" value="#{notices.infos}" type="List" />
+		<cdk:object name="warnings" value="#{notices.warnings}" type="List" />
+		<cdk:object name="errors" value="#{notices.errors}" type="List" />
+		<cdk:object name="expanded" value="#{component.attributes['expanded']}" />
+
+		<div id="#{clientId}">
+			<c:if test="#{notices.containsNotices}">
+				<div
+					onclick="jQuery('#noticesDiv').slideToggle('slow'); jQuery('#titleDiv').slideToggle('slow');">
+
+					<div id="titleDiv" style="display:#{!expanded ? 'block' : 'none'};"
+						class="noticeBox">
+						<c:if test="#{not empty errors}">
+							#{component.attributes['errorTitle']}
+							<script type="text/javascript">
+								jQuery('#titleDiv').css('background-color',
+								'#EDA3A3');
+							</script>
+						</c:if>
+
+						<c:if
+							test="#{not empty warnings and empty errors}">
+							#{component.attributes['warningTitle']}
+							<script type="text/javascript">
+								jQuery('#titleDiv').css('background-color',
+								'#EBEBA0');
+							</script>
+						</c:if>
+
+						<c:if
+							test="#{not empty infos and empty warnings and empty errors}">
+							#{component.attributes['infoTitle']}
+							<script type="text/javascript">
+								jQuery('#titleDiv').css('background-color',
+								'#D5F7E8');
+							</script>
+						</c:if>
+					</div>
+
+					<div id="noticesDiv" style="display:#{expanded ? 'block' : 'none'};">
+
+						<c:if test="#{not empty errors}">
+							<div style="background-color:#EDA3A3;" class="noticeBox">
+								<div style="margin-left:auto;margin-right:auto;text-align:left;">
+									<div id="errorList">
+										<ul style="margin:2px;">
+											<c:forEach var="_e" items="#{errors}">
+												<li>#{_e}</li>
+											</c:forEach>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</c:if>
+
+						<c:if
+							test="#{not empty warnings}">
+							<div style="background-color:#EBEBA0;" class="noticeBox">
+								<div style="margin-left:auto;margin-right:auto;text-align:left;">
+									<div id="warningList">
+										<ul style="margin:2px;">
+											<c:forEach var="w" items="#{warnings}">
+												<li>#{w}</li>
+											</c:forEach>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</c:if>
+
+						<c:if test="#{not empty infos}">
+							<div style="background-color:#D5F7E8;" class="noticeBox">
+								<div style="margin-left:auto;margin-right:auto;text-align:left;">
+									<div id="infoList">
+										<ul style="margin:2px;">
+											<c:forEach var="i" items="#{infos}">
+												<li>#{i}</li>
+											</c:forEach>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</c:if>
+
+					</div>
 				</div>
-					
-				<div id="noticesDiv" style="display:#{expanded ? 'block' : 'none'};">				
-					
-					<c:if test="#{notices.errors != null and !notices.errors.isEmpty()}">
-						<div style="background-color:#EDA3A3;" class="noticeBox">
-							<div style="margin-left:auto;margin-right:auto;text-align:left;">
-								<div id="errorList">
-									<ul style="margin:2px;">
-										<c:forEach var="_e" items="#{notices.errors}">
-											<li>#{_e}</li>
-										</c:forEach>
-									</ul>
-								</div>
-							</div>	
-						</div>
-					</c:if>
-					
-					<c:if test="#{notices.warnings != null and !notices.warnings.isEmpty()}">
-						<div style="background-color:#EBEBA0;" class="noticeBox">
-							<div style="margin-left:auto;margin-right:auto;text-align:left;">
-								<div id="warningList">
-									<ul style="margin:2px;">
-										<c:forEach var="w" items="#{notices.warnings}">
-											<li>#{w}</li>
-										</c:forEach>
-									</ul>
-								</div>
-							</div>	
-						</div>
-					</c:if>
-						
-					<c:if test="#{notices.infos != null and !notices.infos.isEmpty()}">
-						<div style="background-color:#D5F7E8;" class="noticeBox">
-							<div style="margin-left:auto;margin-right:auto;text-align:left;">
-								<div id="infoList">
-									<ul style="margin:2px;">
-										<c:forEach var="i" items="#{notices.infos}">
-											<li>#{i}</li>
-										</c:forEach>
-									</ul>
-								</div>
-							</div>	
-						</div>
-					</c:if>
-					
-				</div>
-			   </div>
 			</c:if>
 		</div>
-    	
-   	</cc:implementation>
+
+	</cc:implementation>
 
 </cdk:root>
