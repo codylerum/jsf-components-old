@@ -20,12 +20,29 @@ import com.outjected.jsf.component.AbstractDecorateInput;
  */
 public class DecorateInputRendererBase extends RendererBase {
 
+    private static final String STYLE_CLASS_ATTR_NAME = "styleClass";
+    private static final String SKIP_CONTROL_CLASS_ATTR_NAME = "skipControlClass";
+    private static final String FORM_CONTROL_STYLE = "form-control";
+
     public UIMessage getMessage(UIComponent component) {
         return (UIMessage) component.getFacet("message");
     }
 
     public void encodeValue(FacesContext facesContext, UIComponent component) throws IOException {
         for (UIComponent c : component.getChildren()) {
+            boolean skipControlClass = (Boolean) component.getAttributes().get(SKIP_CONTROL_CLASS_ATTR_NAME);
+            if (!skipControlClass && c instanceof EditableValueHolder) {
+                String styleClass = (String) c.getAttributes().get(STYLE_CLASS_ATTR_NAME);
+                if (styleClass != null) {
+                    if (!styleClass.contains(FORM_CONTROL_STYLE)) {
+                        styleClass = styleClass + " " + FORM_CONTROL_STYLE;
+                        c.getAttributes().put(STYLE_CLASS_ATTR_NAME, styleClass);
+                    }
+                }
+                else {
+                    c.getAttributes().put(STYLE_CLASS_ATTR_NAME, FORM_CONTROL_STYLE);
+                }
+            }
             c.encodeAll(facesContext);
         }
     }

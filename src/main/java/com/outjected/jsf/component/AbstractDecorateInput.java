@@ -11,7 +11,7 @@ import org.richfaces.cdk.annotations.Tag;
 
 @JsfComponent(type = "com.outjected.jsf.DecorateInput", family = "com.outjected.layout", renderer = @JsfRenderer(type = "com.outjected.jsf.decorateInput"), tag = @Tag(name = "decorateInput"), attributes = {
         "base-props.xml", "core-props.xml" })
-abstract public class AbstractDecorateInput extends AbstractObjectField {
+abstract public class AbstractDecorateInput extends AbstractDecorate {
 
     public AbstractDecorateInput() {
         super();
@@ -25,4 +25,7 @@ abstract public class AbstractDecorateInput extends AbstractObjectField {
     public abstract UIComponent getMessage();
 
     public abstract void setMessage(UIComponent message);
+
+    @Attribute(defaultValue = "false", required = false)
+    public abstract boolean isSkipControlClass();
 }

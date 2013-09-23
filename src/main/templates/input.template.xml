@@ -13,18 +13,19 @@
 	<cc:implementation>
 		<c:if test="#{not empty component.attributes['help']}">
 			<input cdk:passThroughWithExclusions="id,class"
-				class="popover-source"
+				class="#{component.attributes['styleClass']} popover-source"
 				type="#{component.attributes['type']}" id="#{clientId}" name="#{clientId}"
 				value="#{getInputValue(facesContext, component)}" placeholder="#{component.attributes['placeholder']}"
 				autocomplete="#{component.attributes['autocomplete']}" min="#{component.attributes['min']}"
 				max="#{component.attributes['max']}" step="#{component.attributes['step']}"
-				data-container="body" data-content="#{component.attributes['help']}"
+				data-container="#{component.attributes['helpContainer']}" data-content="#{component.attributes['help']}"
 				data-title="#{component.attributes['helpTitle']}" data-placement="#{component.attributes['helpPlacement']}"
 				data-trigger="#{component.attributes['helpTrigger']}" data-delay="#{component.attributes['helpDelay']}"
 				data-html="#{component.attributes['helpHtml']}" />
 		</c:if>
 		<c:if test="#{empty component.attributes['help']}">
 			<input cdk:passThroughWithExclusions="id,class"
+			    class="#{component.attributes['styleClass']}"
 				type="#{component.attributes['type']}" id="#{clientId}" name="#{clientId}"
 				value="#{getInputValue(facesContext, component)}" placeholder="#{component.attributes['placeholder']}"
 				autocomplete="#{component.attributes['autocomplete']}" min="#{component.attributes['min']}"

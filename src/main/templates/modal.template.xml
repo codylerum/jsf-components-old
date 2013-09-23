@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el" 
+	xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core"
+    xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core"
+    xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite"
+    xmlns:javaee="http://java.sun.com/xml/ns/javaee">
+
+    <cc:interface>
+        <cdk:class>com.outjected.jsf.renderkit.ModalRenderer</cdk:class>
+        <cdk:superclass>org.richfaces.renderkit.RendererBase</cdk:superclass>
+        <cdk:renderer-type>com.outjected.jsf.modal</cdk:renderer-type>
+    </cc:interface>
+
+<cc:implementation>
+<cdk:object type="String" name="closeText" value="&#215;" />
+<div cdk:passThroughWithExclusions="id,styleClass,class" id="#{clientId}" class="modal fade #{component.attributes['styleClass']}" data-keyboard="#{component.attributes['keyboard']}" data-backdrop="#{component.attributes['backdrop']}">
+	<div class="modal-dialog" style="max-width:#{component.attributes['maxWidth']}px;">
+    	<div class="modal-content">
+    		<c:if test="#{not empty component.attributes['header']}">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">#{closeText}</button>
+	        			<h4 class="modal-title">#{component.attributes['header']}</h4>
+	      		</div>
+      		</c:if>
+			<div class="modal-body">
+				<cdk:body />
+			</div>
+		</div>
+	</div>
+</div>
+</cc:implementation>
+</cdk:root>

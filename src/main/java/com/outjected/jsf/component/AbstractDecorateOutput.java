@@ -6,5 +6,5 @@ import org.richfaces.cdk.annotations.Tag;
 
 @JsfComponent(type = "com.outjected.jsf.DecorateOutput", family = "com.outjected.layout", renderer = @JsfRenderer(type = "com.outjected.jsf.decorateOutput"), tag = @Tag(name = "decorateOutput"), attributes = {
         "base-props.xml", "core-props.xml" })
-abstract public class AbstractDecorateOutput extends AbstractObjectField {
+abstract public class AbstractDecorateOutput extends AbstractDecorate {
 }
