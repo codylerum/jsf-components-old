@@ -1,7 +1,7 @@
 package com.outjected.jsf.component;
 
 import javax.faces.component.UIComponent;
-import javax.faces.component.UIMessage;
+import javax.faces.component.UIMessages;
 
 import org.richfaces.cdk.annotations.Attribute;
 import org.richfaces.cdk.annotations.Facet;
@@ -15,16 +15,16 @@ abstract public class AbstractDecorateInput extends AbstractDecorate {
 
     public AbstractDecorateInput() {
         super();
-        this.setMessage(new UIMessage());
+        this.setMessages(new UIMessages());
     }
 
     @Attribute(required = false, defaultValue = "true")
-    public abstract boolean isRenderMessage();
+    public abstract boolean isRenderMessages();
 
-    @Facet(name = "message")
-    public abstract UIComponent getMessage();
+    @Facet(name = "messages")
+    public abstract UIComponent getMessages();
 
-    public abstract void setMessage(UIComponent message);
+    public abstract void setMessages(UIComponent messages);
 
     @Attribute(defaultValue = "false", required = false)
     public abstract boolean isSkipControlClass();

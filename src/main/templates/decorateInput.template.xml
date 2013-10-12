@@ -13,8 +13,8 @@
 
 		<cdk:object type="com.outjected.jsf.component.AbstractDecorateInput" name="decorateInput" value="#{getDecorateInput(component)}" />
 		<cdk:object type="javax.faces.component.UIComponent" name="valueComponent" value="#{getValueComponent(facesContext,component,decorateInput)}" />
-		<cdk:object type="javax.faces.component.UIMessage" name="message" value="#{getMessage(decorateInput)}" />
-		<cdk:call expression="message.setFor(valueComponent.getId())" />
+		<cdk:object type="javax.faces.component.UIMessages" name="messages" value="#{getMessages(decorateInput)}" />
+		<cdk:call expression="messages.setFor(valueComponent.getId())" />
 		
 	<div cdk:passThroughWithExclusions="id,class" id="#{clientId}" class="form-group #{component.attributes['styleClass']}#{hasErrors(facesContext,valueComponent) ? ' has-error' : null}">
 		<c:if test="#{not empty component.attributes['help']}">	
@@ -39,9 +39,9 @@
 		</c:if>
 		<div class="#{component.attributes['valueClass']}">
 			<cdk:call expression="encodeValue(facesContext,component)" />
-			<c:if test="#{decorateInput.isRenderMessage()}">
+			<c:if test="#{decorateInput.isRenderMessages()}">
 				<span class="help-block">
-					<cdk:call expression="message.encodeAll(facesContext)" />
+					<cdk:call expression="messages.encodeAll(facesContext)" />
 				</span>
 			</c:if>
 		</div>

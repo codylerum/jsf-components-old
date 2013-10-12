@@ -6,7 +6,7 @@ import java.util.Iterator;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.EditableValueHolder;
 import javax.faces.component.UIComponent;
-import javax.faces.component.UIMessage;
+import javax.faces.component.UIMessages;
 import javax.faces.context.FacesContext;
 
 import org.richfaces.renderkit.RendererBase;
@@ -24,8 +24,8 @@ public class DecorateInputRendererBase extends RendererBase {
     private static final String SKIP_CONTROL_CLASS_ATTR_NAME = "skipControlClass";
     private static final String FORM_CONTROL_STYLE = "form-control";
 
-    public UIMessage getMessage(UIComponent component) {
-        return (UIMessage) component.getFacet("message");
+    public UIMessages getMessages(UIComponent component) {
+        return (UIMessages) component.getFacet("messages");
     }
 
     public void encodeValue(FacesContext facesContext, UIComponent component) throws IOException {
