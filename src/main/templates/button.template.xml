@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el"
+	xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core" xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core"
+	xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite"
+	xmlns:javaee="http://java.sun.com/xml/ns/javaee">
+
+	<cc:interface>
+		<cdk:class>com.outjected.jsf.renderkit.ButtonRenderer</cdk:class>
+		<cdk:superclass>org.richfaces.renderkit.RendererBase</cdk:superclass>
+		<cdk:renderer-type>com.outjected.jsf.button</cdk:renderer-type>
+	</cc:interface>
+
+	<cc:implementation>
+		<cdk:object type="String" name="innerValue"
+			value="#{component.attributes['value']}" />
+		<button cdk:passThroughWithExclusions="id,styleClass,class,type"
+			id="#{clientId}" class="#{component.attributes['styleClass']}" type="#{component.attributes['type']}">
+			<c:if test="#{not empty innerValue}">
+				<span>#{innerValue}</span>
+			</c:if>
+			<cdk:body />
+		</button>
+	</cc:implementation>
+</cdk:root>
