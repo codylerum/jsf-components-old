@@ -16,12 +16,7 @@ function startZclip(id, zclip_path, copyClass, copiedClass) {
                 zclip.on('noflash', function(zclip, args) {
                         $('.clipboard-copy-div').hide();
                 });
-                window.onresize = zclipReposition(zclip);
         }
         var zclip_target_id = '#' + id.replace(/:/g, "\\:");
         zclip.glue($(zclip_target_id));
-}
-
-function zclipReposition(zclip) {
-        zclip.reposition();
 }
