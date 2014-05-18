@@ -56,7 +56,7 @@ public class DecorateInputRendererBase extends RendererBase {
             return true;
         }
         else {
-            Iterator<FacesMessage> it = facesContext.getMessages(((UIComponent) valueComponent).getClientId(facesContext));
+            Iterator<FacesMessage> it = facesContext.getMessages(valueComponent.getClientId(facesContext));
             while (it.hasNext()) {
                 if (it.next().getSeverity().compareTo(FacesMessage.SEVERITY_WARN) >= 0) {
                     return true;
@@ -70,7 +70,7 @@ public class DecorateInputRendererBase extends RendererBase {
         return (AbstractDecorateInput) component;
     }
 
-    public UIComponent getValueComponent(FacesContext facesContext, UIComponent component, AbstractDecorateInput decorateInput) {
+    public UIComponent getValueComponent(@SuppressWarnings("unused") FacesContext facesContext, UIComponent component, AbstractDecorateInput decorateInput) {
 
         int editableValueCount = 0;
         UIComponent lastEditableValueHolder = null;

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el" xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core"
+	xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core" xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite"
+	xmlns:javaee="http://java.sun.com/xml/ns/javaee">
+
+	<cc:interface>
+		<cdk:class>com.outjected.jsf.renderkit.Select2AutoCompleteRenderer</cdk:class>
+		<cdk:superclass>org.richfaces.renderkit.InputRendererBase</cdk:superclass>
+		<cdk:renderer-type>com.outjected.jsf.select2AutoComplete</cdk:renderer-type>
+	</cc:interface>
+
+	<cc:implementation>
+		<input cdk:passThroughWithExclusions="id,class" class="#{component.attributes['styleClass']}"
+			type="hidden" id="#{clientId}" name="#{clientId}" value="#{getInputValue(facesContext, component)}" />
+			
+		<script type="text/javascript">
+			var s2 = $(jsfId('#{clientId}')).select2({
+			    minimumInputLength: 2,
+			    allowClear: !#{component.attributes['required']},
+			    placeholder: "#{component.attributes['placeholder']}",
+			    ajax: {
+			      url: "#{facesContext.getExternalContext().getRequestContextPath()}#{component.attributes['searchPath']}",
+			      quietMillis: 500,
+			      dataType: 'json',
+			      data: function (term, page) {
+			        return {
+			          q: term
+			        };
+			      },
+			      results: function (data, page) {
+			        return { results: data };
+			      }
+			    },
+			    initSelection: function(element, callback) {
+			        var id=$(element).val();
+			        if (id!=="") {
+			            $.ajax("#{facesContext.getExternalContext().getRequestContextPath()}#{component.attributes['initPath']}?id="+id, {			                
+			                dataType: 'json'
+			            }).done(function(data) { callback(data); });
+			        }
+			    }
+			  });			
+		</script>		
+	</cc:implementation>
+</cdk:root>
