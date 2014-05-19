@@ -8,7 +8,8 @@
 	<name>JSF Components</name>
 
 	<properties>
-		<org.richfaces.version>4.3.1.Final</org.richfaces.version>
+		<org.richfaces.cdk.version>4.3.1.Final</org.richfaces.cdk.version>
+		<org.richfaces.version>4.3.6.Final</org.richfaces.version>		
 	</properties>
 
 	<repositories>
@@ -69,7 +70,7 @@
 		<dependency>
 			<groupId>org.richfaces.cdk</groupId>
 			<artifactId>annotations</artifactId>
-			<version>${org.richfaces.version}</version>
+			<version>${org.richfaces.cdk.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		
@@ -119,7 +120,7 @@
 			<plugin>
 				<groupId>org.richfaces.cdk</groupId>
 				<artifactId>maven-cdk-plugin</artifactId>
-				<version>${org.richfaces.version}</version>
+				<version>${org.richfaces.cdk.version}</version>
 				<executions>
 					<execution>
 						<id>cdk-generate-sources</id>
@@ -151,7 +152,7 @@
 											maven-cdk-plugin
 										</artifactId>
 										<versionRange>
-											[4.2.3.Final,)
+											[4.3.1.Final,)
 										</versionRange>
 										<goals>
 											<goal>generate</goal>
