@@ -70,7 +70,7 @@ public class DecorateInputRendererBase extends RendererBase {
         return (AbstractDecorateInput) component;
     }
 
-    public UIComponent getValueComponent(@SuppressWarnings("unused") FacesContext facesContext, UIComponent component, AbstractDecorateInput decorateInput) {
+    public UIComponent getValueComponent(FacesContext facesContext, UIComponent component, AbstractDecorateInput decorateInput) {
 
         int editableValueCount = 0;
         UIComponent lastEditableValueHolder = null;

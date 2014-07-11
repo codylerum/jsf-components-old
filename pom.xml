@@ -4,12 +4,12 @@
 	<groupId>com.outjected</groupId>
 	<artifactId>jsf-components</artifactId>
 	<packaging>jar</packaging>
-	<version>1.1.7-SNAPSHOT</version>
+	<version>2.0.0-SNAPSHOT</version>
 	<name>JSF Components</name>
 
 	<properties>
-		<org.richfaces.cdk.version>4.3.1.Final</org.richfaces.cdk.version>
-		<org.richfaces.version>4.3.6.Final</org.richfaces.version>		
+		<org.richfaces.cdk.version>4.5.0.Alpha2</org.richfaces.cdk.version>
+		<richfaces.version>4.5.0.Alpha3</richfaces.version>
 	</properties>
 
 	<repositories>
@@ -27,6 +27,14 @@
 				<updatePolicy>never</updatePolicy>
 			</snapshots>
 		</repository>
+
+		<repository>
+			<id>jboss-staging-repository-group</id>
+			<name>JBoss Staging Repository Group</name>
+			<url>http://repository.jboss.org/nexus/content/groups/staging</url>
+			<layout>default</layout>
+		</repository>
+
 	</repositories>
 
 	<pluginRepositories>
@@ -46,23 +54,18 @@
 		</pluginRepository>
 	</pluginRepositories>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.richfaces</groupId>
-				<artifactId>richfaces-bom</artifactId>
-				<version>${org.richfaces.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<dependencies>
 
 		<dependency>
+			<groupId>org.richfaces</groupId>
+			<artifactId>richfaces</artifactId>
+			<version>${richfaces.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.jboss.spec</groupId>
-			<artifactId>jboss-javaee-web-6.0</artifactId>
-			<version>2.0.0.Final</version>
+			<artifactId>jboss-javaee-7.0</artifactId>
+			<version>1.0.0.Final</version>
 			<type>pom</type>
 			<scope>provided</scope>
 		</dependency>
@@ -73,25 +76,7 @@
 			<version>${org.richfaces.cdk.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.richfaces.core</groupId>
-			<artifactId>richfaces-core-impl</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.richfaces.ui</groupId>
-			<artifactId>richfaces-components-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.richfaces.ui</groupId>
-			<artifactId>richfaces-components-ui</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -119,7 +104,7 @@
 			</plugin>
 			<plugin>
 				<groupId>org.richfaces.cdk</groupId>
-				<artifactId>maven-cdk-plugin</artifactId>
+				<artifactId>richfaces-cdk-maven-plugin</artifactId>
 				<version>${org.richfaces.cdk.version}</version>
 				<executions>
 					<execution>
@@ -134,8 +119,8 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on 
-					the Maven build itself. -->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -149,7 +134,7 @@
 											org.richfaces.cdk
 										</groupId>
 										<artifactId>
-											maven-cdk-plugin
+											richfaces-cdk-maven-plugin
 										</artifactId>
 										<versionRange>
 											[4.3.1.Final,)
