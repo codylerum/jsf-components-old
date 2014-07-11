@@ -10,7 +10,8 @@ import org.richfaces.renderkit.RendererBase;
  * @author Cody Lerum
  * 
  */
-@ResourceDependencies({ @ResourceDependency(name = "jquery.js"), @ResourceDependency(name = "ZeroClipboard.min.js", library = "com.outjected.jsf"),
-        @ResourceDependency(name = "ZeroClipboardClient.js", library = "com.outjected.jsf") })
+@ResourceDependencies({
+		@ResourceDependency(name = "ZeroClipboard.min.js", library = "com.outjected.jsf"),
+		@ResourceDependency(name = "ZeroClipboardClient.js", library = "com.outjected.jsf") })
 public class CopyRendererBase extends RendererBase {
 }
