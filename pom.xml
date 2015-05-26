@@ -8,6 +8,7 @@
 	<name>JSF Components</name>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.richfaces.cdk.version>4.5.0.Alpha2</org.richfaces.cdk.version>
 		<richfaces.version>4.5.0.Alpha3</richfaces.version>
 	</properties>
